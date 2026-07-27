@@ -1,0 +1,1435 @@
+/* =========================================================
+   GEMILANG KATUN OUTBOUND — Design Tokens v2
+   Konsep: "Canvas & Rope" — terinspirasi kain katun/kanvas
+   tenda lapangan, tali webbing, dan tag gantung perlengkapan
+   outdoor. Dasar hutan gelap + aksen kanvas & tali.
+   ========================================================= */
+:root{
+  --gko-bg:            #12160E;
+  --gko-bg-alt:        #171B11;
+  --gko-bg-deep:       #0C0F09;
+
+  --gko-canvas:        #E7DFC6;   /* kain kanvas terang */
+  --gko-canvas-2:      #DCD2AF;   /* kanvas sedikit gelap */
+  --gko-ink:           #2B2418;   /* teks di atas kanvas */
+
+  --gko-surface:       #1C2115;
+  --gko-surface-2:     #232A18;
+  --gko-border:        rgba(231,223,198,.12);
+
+  --gko-text:          #F3EEDD;
+  --gko-text-muted:    #ADB29A;
+
+  --gko-rust:          #D97B29;   /* oranye trail marker */
+  --gko-rust-dark:     #B4611B;
+  --gko-moss:          #7C9A54;   /* hijau lumut */
+  --gko-rope:          #A9754A;   /* tali/kulit coklat */
+  --gko-brass:         #C9A24B;   /* aksen kuningan (gesper) */
+
+  --gko-font-display:  'Baloo 2', system-ui, sans-serif;
+  --gko-font-body:     'Plus Jakarta Sans', system-ui, sans-serif;
+  --gko-font-tag:      'Oswald', system-ui, sans-serif;
+
+  --gko-radius-lg: 22px;
+  --gko-radius-md: 14px;
+  --gko-radius-sm: 8px;
+  --gko-shadow: 0 22px 48px -22px rgba(0,0,0,.6);
+  --gko-shadow-canvas: 0 16px 30px -16px rgba(0,0,0,.45);
+}
+
+*{ scroll-behavior: smooth; }
+
+body{
+  background: var(--gko-bg);
+  color: var(--gko-text);
+  font-family: var(--gko-font-body);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* subtle canvas weave texture across the whole page */
+body::before{
+  content:"";
+  position: fixed; inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.05;
+  background-image:
+    repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(-45deg, #ffffff 0 1px, transparent 1px 6px);
+}
+.navbar, header, section, footer{ position: relative; z-index:1; }
+
+h1,h2,h3,h4,.gko-font-display{
+  font-family: var(--gko-font-display);
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+a{ text-decoration:none; }
+img{ max-width:100%; display:block; }
+
+.gko-text-muted{ color: var(--gko-text-muted) !important; }
+.gko-link{ color: var(--gko-rust); font-weight:600; }
+.gko-link:hover{ color: var(--gko-text); }
+
+::selection{ background: var(--gko-rust); color:#fff; }
+
+a:focus-visible,button:focus-visible,.accordion-button:focus-visible{
+  outline: 2px solid var(--gko-rust);
+  outline-offset: 3px;
+}
+
+/* utility: stitched dashed border, like sewn canvas edge */
+.gko-stitched{
+  border: 2px dashed rgba(43,36,24,.35);
+}
+.gko-stitched-dark{
+  border: 2px dashed rgba(231,223,198,.18);
+}
+
+/* =========================================================
+   BUTTONS — bergaya "patch kanvas" dijahit
+   ========================================================= */
+.gko-btn-primary{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  color:#fff;
+  border:none;
+  font-weight:700;
+  border-radius: 999px;
+  box-shadow: 0 12px 26px -10px rgba(217,123,41,.55);
+  transition: transform .2s ease, box-shadow .2s ease, color .2s ease;
+  position: relative;
+}
+.gko-btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -10px rgba(217,123,41,.7);
+  color:#fff;
+}
+
+.gko-btn-outline{
+  border:1.5px dashed rgba(243,238,221,.55);
+  color: var(--gko-text);
+  border-radius: 999px;
+  font-weight:600;
+  background: rgba(255,255,255,.03);
+  transition: all .2s ease;
+}
+.gko-btn-outline:hover{
+  background: var(--gko-text);
+  color:#171B11;
+  border-color: var(--gko-text);
+  border-style: solid;
+}
+
+.gko-btn-outline-dark{
+  border:1.5px dashed rgba(43,36,24,.4);
+  color:#171B11;
+  border-radius: 999px;
+  font-weight:600;
+  background: transparent;
+  transition: all .2s ease;
+}
+.gko-btn-outline-dark:hover{
+  background: var(--gko-rust);
+  border-color: var(--gko-rust);
+  border-style: solid;
+  color:#fff;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.gko-navbar{
+  padding: 18px 0;
+  background: transparent;
+  transition: all .3s ease;
+}
+.gko-navbar.scrolled{
+  padding: 10px 0;
+  background: rgba(18,22,14,.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,.6);
+  border-bottom: 1px solid var(--gko-border);
+}
+
+.gko-brand{
+  display:flex; align-items:center; gap:.6rem;
+  font-family: var(--gko-font-display);
+  font-weight:700;
+  font-size:1.25rem;
+  color: var(--gko-text);
+}
+.gko-brand em{
+  font-style: normal;
+  color: var(--gko-rust);
+}
+.gko-brand-icon{
+  width:38px; height:38px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-radius: 12px;
+  color:#fff;
+  font-size:1.1rem;
+  transform: rotate(-6deg);
+  box-shadow: 0 6px 14px -6px rgba(217,123,41,.7);
+}
+
+.gko-navbar .nav-link{
+  color: rgba(243,238,221,.85);
+  font-weight:600;
+  padding: .5rem 1rem;
+  font-family: var(--gko-font-tag);
+  letter-spacing:.03em;
+  text-transform: uppercase;
+  font-size:.85rem;
+}
+.gko-navbar .nav-link:hover,
+.gko-navbar .nav-link.active{ color: var(--gko-rust); }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.gko-hero{
+  position: relative;
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.gko-hero-media{ position:absolute; inset:0; z-index:0; }
+.gko-hero-media img{ width:100%; height:100%; object-fit:cover; }
+.gko-hero-overlay{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(12,15,9,.8) 0%, rgba(18,20,12,.6) 45%, rgba(10,12,7,.97) 100%),
+    linear-gradient(90deg, rgba(8,10,6,.92) 0%, rgba(8,10,6,.4) 55%, rgba(8,10,6,.18) 100%);
+}
+.gko-hero-content{ position:relative; z-index:1; padding-top: 110px; padding-bottom: 60px; }
+
+.gko-eyebrow{
+  display:inline-flex; align-items:center; gap:.5rem;
+  background: rgba(217,123,41,.14);
+  border:1.5px dashed rgba(217,123,41,.5);
+  color: var(--gko-rust);
+  font-family: var(--gko-font-tag);
+  font-weight:600;
+  font-size:.78rem;
+  letter-spacing:.09em;
+  text-transform: uppercase;
+  padding: .45rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+.gko-eyebrow-dark{
+  background: rgba(124,154,84,.14);
+  border-color: rgba(124,154,84,.5);
+  color:#5C7A3B;
+}
+
+.gko-hero-title{
+  font-size: clamp(2.2rem, 5vw, 3.75rem);
+  line-height: 1.12;
+  color: var(--gko-text);
+  margin-bottom: 1.25rem;
+}
+.gko-hero-title span{ color: var(--gko-rust); }
+
+.gko-hero-text{
+  font-size: 1.1rem;
+  color: rgba(243,238,221,.85);
+  max-width: 560px;
+}
+
+.gko-hero-stats{ border-top: 1px dashed var(--gko-border); padding-top: 1.75rem; }
+.gko-hero-stat{ display:flex; align-items:center; gap:.75rem; }
+.gko-hero-stat i{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius: 12px;
+  background: rgba(217,123,41,.14);
+  color: var(--gko-rust);
+  font-size:1.1rem;
+}
+.gko-hero-stat strong{
+  display:block; font-family: var(--gko-font-display);
+  font-size:1.15rem; color: var(--gko-text);
+}
+.gko-hero-stat span{ font-size:.8rem; color: var(--gko-text-muted); font-family: var(--gko-font-tag); letter-spacing:.03em; text-transform: uppercase; }
+
+.gko-scroll-cue{
+  position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px dashed rgba(243,238,221,.45);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gko-text); z-index:1;
+  animation: gkoBounce 2s infinite;
+}
+@keyframes gkoBounce{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,8px); } }
+
+/* rope divider — tali webbing bergelombang antar section */
+.gko-rope-divider{ background: var(--gko-bg); line-height:0; }
+.gko-rope-divider svg{ width:100%; height:26px; display:block; }
+.gko-rope-divider path{ fill:none; stroke: var(--gko-rope); stroke-width:3; stroke-linecap: round; opacity:.6; }
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+.gko-section{ padding: 100px 0; background: var(--gko-bg); position: relative; }
+.gko-section-alt{ background: var(--gko-bg-alt); }
+.gko-section-dark{ background: var(--gko-bg-deep); }
+
+.gko-heading-wrap{ margin-bottom: 3rem; }
+.gko-section-title{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); color: var(--gko-text); margin-bottom: 1rem; }
+
+#tentang .gko-section-title,
+#faq .gko-section-title,
+#kenapa-kami .gko-section-title,
+#paket .gko-section-title,
+#galeri .gko-section-title{ color: var(--gko-text); }
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.gko-about-media{ position: relative; border-radius: var(--gko-radius-lg); overflow: hidden; box-shadow: var(--gko-shadow); border: 3px solid var(--gko-bg-alt); }
+.gko-about-media img{ width:100%; aspect-ratio: 9/10; object-fit: cover; }
+.gko-about-card{
+  position:absolute; left:20px; bottom:20px; right:20px;
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.3);
+  border-radius: var(--gko-radius-md);
+  padding: 1rem 1.25rem;
+  display:flex; align-items:center; gap:.9rem;
+  color: var(--gko-ink);
+  box-shadow: var(--gko-shadow-canvas);
+}
+.gko-about-card i{ font-size:1.6rem; color: var(--gko-rust-dark); }
+.gko-about-card strong{ display:block; font-family: var(--gko-font-display); }
+.gko-about-card span{ font-size:.8rem; color: rgba(43,36,24,.7); font-family: var(--gko-font-tag); text-transform: uppercase; letter-spacing:.03em; }
+
+.gko-check-item{ display:flex; align-items:center; gap:.6rem; font-weight:600; color: var(--gko-text); font-size:.95rem; }
+.gko-check-item i{ color: var(--gko-moss); font-size:1.05rem; }
+
+/* =========================================================
+   WHY CHOOSE US — TRAIL CHECKPOINTS (gaya tag kanvas)
+   ========================================================= */
+.gko-trail{ position:relative; }
+.gko-trail-line{ position:absolute; top:-46px; left:0; right:0; width:100%; height:120px; z-index:0; pointer-events:none; }
+.gko-trail-line path{ fill:none; stroke: var(--gko-rope); stroke-width:3; stroke-dasharray: 2 14; stroke-linecap: round; opacity:.55; }
+
+.gko-trail-card{
+  position:relative; z-index:1;
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.28);
+  border-radius: var(--gko-radius-md);
+  padding: 2.2rem 1.5rem 1.75rem;
+  height:100%;
+  color: var(--gko-ink);
+  box-shadow: var(--gko-shadow-canvas);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gko-trail-card:hover{ transform: translateY(-6px) rotate(-.4deg); box-shadow: var(--gko-shadow); }
+.gko-trail-pos{
+  position:absolute; top:-15px; left:1.4rem;
+  background: var(--gko-rust);
+  color:#fff;
+  font-family: var(--gko-font-tag);
+  font-weight:600;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  transform: rotate(-3deg);
+  box-shadow: 0 6px 12px -4px rgba(180,97,27,.6);
+}
+.gko-trail-icon{
+  width:54px; height:54px; border-radius: 14px;
+  background: rgba(124,154,84,.16);
+  color: #4E6B31;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom: 1.1rem;
+}
+.gko-trail-card h3{ font-size:1.1rem; color: var(--gko-ink); margin-bottom:.5rem; }
+.gko-trail-card p{ color: rgba(43,36,24,.72); font-size:.92rem; margin-bottom:0; }
+
+/* =========================================================
+   CTA
+   ========================================================= */
+.gko-cta{ position: relative; padding: 110px 0; overflow:hidden; }
+.gko-cta-media{ position:absolute; inset:0; z-index:0; }
+.gko-cta-media img{ width:100%; height:100%; object-fit:cover; }
+.gko-cta-overlay{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(12,15,9,.9), rgba(12,15,9,.84)); }
+.gko-cta-title{ color:#fff; font-size: clamp(1.8rem, 3.6vw, 2.5rem); margin-bottom: .9rem; }
+.gko-cta-text{ color: rgba(243,238,221,.85); font-size: 1.05rem; }
+
+/* =========================================================
+   PAKET / PACKAGE CARDS — tag gantung gaya perlengkapan
+   ========================================================= */
+.gko-pack-card{
+  position:relative;
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: visible;
+  height:100%;
+  display:flex; flex-direction:column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gko-pack-card:hover{ transform: translateY(-8px); box-shadow: var(--gko-shadow); }
+.gko-pack-highlight{ border:1.5px solid var(--gko-rust); transform: translateY(-14px); }
+.gko-pack-highlight:hover{ transform: translateY(-20px); }
+
+.gko-pack-ribbon{
+  position:absolute; top:-14px; right:20px; z-index:2;
+  background: var(--gko-canvas);
+  color: var(--gko-ink);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing:.04em;
+  font-size:.72rem;
+  font-weight:600;
+  padding: .45rem .9rem;
+  border-radius: 6px;
+  border: 1.5px dashed rgba(43,36,24,.35);
+  display:flex; align-items:center; gap:.35rem;
+  transform: rotate(3deg);
+  box-shadow: var(--gko-shadow-canvas);
+}
+.gko-pack-ribbon i{ color: var(--gko-rust-dark); }
+
+.gko-pack-media{ aspect-ratio: 16/10.5; overflow:hidden; border-radius: var(--gko-radius-lg) var(--gko-radius-lg) 0 0; }
+.gko-pack-media img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.gko-pack-card:hover .gko-pack-media img{ transform: scale(1.06); }
+
+.gko-pack-body{ padding: 1.6rem 1.5rem 1.75rem; flex:1; display:flex; flex-direction:column; }
+.gko-pack-body h3{ font-size:1.25rem; color: var(--gko-text); margin-bottom:.35rem; }
+
+.gko-pack-price{
+  display:inline-flex; align-items:baseline; gap:.35rem;
+  font-family: var(--gko-font-display);
+  color:#fff;
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  font-size:.9rem; font-weight:600;
+  margin: .85rem 0 1.1rem;
+  padding: .4rem .9rem;
+  border-radius: var(--gko-radius-sm) var(--gko-radius-sm) var(--gko-radius-sm) 2px;
+  width: fit-content;
+}
+.gko-pack-price span{ font-size:1.35rem; }
+
+.gko-pack-list{ list-style:none; padding:0; margin:0; }
+.gko-pack-list li{ display:flex; align-items:flex-start; gap:.55rem; font-size:.92rem; color: var(--gko-text-muted); margin-bottom:.55rem; }
+.gko-pack-list li i{ color: var(--gko-moss); margin-top:.2rem; }
+
+/* =========================================================
+   TESTIMONIALS — kartu kanvas
+   ========================================================= */
+.gko-testi-card{
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.28);
+  border-radius: var(--gko-radius-lg);
+  padding: 3rem 2.5rem 2.25rem;
+  text-align:center;
+  position:relative;
+  color: var(--gko-ink);
+  box-shadow: var(--gko-shadow-canvas);
+}
+.gko-testi-quote{ font-size: 2.5rem; color: var(--gko-rust-dark); opacity:.6; display:block; margin-bottom: .5rem; }
+.gko-stars{ color: var(--gko-rust-dark); font-size:.9rem; margin-bottom: 1rem; }
+.gko-stars i{ margin: 0 1px; }
+.gko-testi-card p{ font-size: 1.1rem; color: var(--gko-ink); line-height: 1.7; margin-bottom: 1.75rem; }
+.gko-testi-person{ display:flex; align-items:center; justify-content:center; gap:.75rem; }
+.gko-testi-person img{ width:52px; height:52px; border-radius:50%; object-fit:cover; border: 2px solid var(--gko-rust); }
+.gko-testi-person strong{ display:block; color: var(--gko-ink); font-family: var(--gko-font-display); }
+.gko-testi-person span{ font-size:.8rem; color: rgba(43,36,24,.65); font-family: var(--gko-font-tag); text-transform: uppercase; letter-spacing:.03em; }
+
+.carousel-control-prev, .carousel-control-next{ width:auto; opacity:1; }
+.gko-carousel-nav{
+  width:44px; height:44px; border-radius:50%;
+  background: var(--gko-surface-2);
+  border:1.5px dashed var(--gko-border);
+  color: var(--gko-text);
+  display:flex; align-items:center; justify-content:center;
+  transition: background .2s ease, color .2s ease;
+}
+.carousel-control-prev{ left:-10px; }
+.carousel-control-next{ right:-10px; }
+.gko-carousel-nav:hover{ background: var(--gko-rust); color:#fff; border-style: solid; }
+
+.gko-carousel-indicators{ position:static; margin-top: 1.75rem; }
+.gko-carousel-indicators button{ width:9px !important; height:9px !important; border-radius:50%; background: var(--gko-border) !important; opacity:1 !important; border:0 !important; }
+.gko-carousel-indicators button.active{ background: var(--gko-rust) !important; width:22px !important; border-radius: 999px; }
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+.gko-gallery-grid{ display:grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 200px); gap: 14px; }
+.gko-g-1{ grid-column: 1 / 2; grid-row: 1 / 3; }
+.gko-g-2{ grid-column: 2 / 3; grid-row: 1 / 2; }
+.gko-g-3{ grid-column: 3 / 4; grid-row: 1 / 2; }
+.gko-g-4{ grid-column: 4 / 5; grid-row: 1 / 3; }
+.gko-g-5{ grid-column: 2 / 3; grid-row: 2 / 3; }
+.gko-g-6{ grid-column: 3 / 4; grid-row: 2 / 3; }
+
+.gko-gallery-item{ position:relative; border-radius: var(--gko-radius-md); overflow:hidden; border: 2px solid var(--gko-bg-alt); }
+.gko-gallery-item img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.gko-gallery-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(18,22,14,0) 40%, rgba(18,22,14,.8));
+  display:flex; align-items:flex-end; justify-content:flex-end;
+  padding: 12px; opacity:0; transition: opacity .3s ease;
+}
+.gko-gallery-overlay i{ width:38px; height:38px; border-radius:50%; background: var(--gko-rust); color:#fff; display:flex; align-items:center; justify-content:center; }
+.gko-gallery-item:hover .gko-gallery-overlay{ opacity:1; }
+.gko-gallery-item:hover img{ transform: scale(1.08); }
+
+@media (max-width: 767.98px){
+  .gko-gallery-grid{ grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 180px); }
+  .gko-g-1{ grid-column:1/2; grid-row:1/2; }
+  .gko-g-2{ grid-column:2/3; grid-row:1/2; }
+  .gko-g-3{ grid-column:1/2; grid-row:2/3; }
+  .gko-g-4{ grid-column:2/3; grid-row:2/3; }
+  .gko-g-5{ grid-column:1/2; grid-row:3/4; }
+  .gko-g-6{ grid-column:2/3; grid-row:3/4; }
+}
+
+/* =========================================================
+   FAQ / ACCORDION
+   ========================================================= */
+.gko-accordion .accordion-item{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-md) !important;
+  overflow:hidden;
+  margin-bottom: 14px;
+}
+.gko-accordion .accordion-button{
+  background: transparent; color: var(--gko-text);
+  font-weight:700; font-family: var(--gko-font-display);
+  font-size: 1rem; box-shadow:none; padding: 1.15rem 1.4rem;
+}
+.gko-accordion .accordion-button:not(.collapsed){ color: var(--gko-rust); background: rgba(217,123,41,.07); }
+.gko-accordion .accordion-button::after{ filter: invert(1); }
+.gko-accordion .accordion-button:focus{ box-shadow:none; }
+.gko-accordion .accordion-body{ color: var(--gko-text-muted); padding: 0 1.4rem 1.4rem; font-size:.95rem; line-height:1.7; }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.gko-footer{ background: var(--gko-bg-deep); padding: 90px 0 30px; border-top: 1px dashed var(--gko-border); }
+.gko-brand-footer{ margin-bottom: .25rem; }
+.gko-footer-title{ font-family: var(--gko-font-tag); text-transform: uppercase; letter-spacing:.06em; color: var(--gko-text); font-size:.9rem; margin-bottom: 1.25rem; }
+.gko-footer-list{ list-style:none; padding:0; margin:0; }
+.gko-footer-list li{ margin-bottom:.75rem; }
+.gko-footer-list a{ color: var(--gko-text-muted); font-size:.92rem; transition: color .2s ease; }
+.gko-footer-list a:hover{ color: var(--gko-rust); }
+.gko-footer-contact li{ display:flex; align-items:flex-start; gap:.55rem; color: var(--gko-text-muted); font-size:.92rem; }
+.gko-footer-contact i{ color: var(--gko-rust); margin-top:.2rem; }
+
+.gko-social{
+  width:38px; height:38px; border-radius:50%;
+  border:1.5px dashed var(--gko-border);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gko-text); transition: all .2s ease;
+}
+.gko-social:hover{ background: var(--gko-rust); color:#fff; border-color: var(--gko-rust); border-style: solid; }
+
+.gko-footer-divider{ border-color: var(--gko-border); margin: 3rem 0 1.5rem; }
+.gko-footer-bottom{ color: var(--gko-text-muted); font-size:.85rem; }
+
+/* =========================================================
+   FLOATING BUTTONS
+   ========================================================= */
+.gko-wa-float{
+  position: fixed; right: 22px; bottom: 22px;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.7rem;
+  box-shadow: 0 14px 28px -10px rgba(37,211,102,.6);
+  z-index: 999;
+  animation: gkoPulse 2.4s infinite;
+}
+.gko-wa-float:hover{ color:#fff; transform: scale(1.06); }
+@keyframes gkoPulse{
+  0%{ box-shadow: 0 0 0 0 rgba(37,211,102,.55); }
+  70%{ box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+.gko-back-top{
+  position: fixed; right: 22px; bottom: 92px;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--gko-surface-2);
+  border:1.5px dashed var(--gko-border);
+  color: var(--gko-text);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 1.2rem; z-index: 999;
+  opacity:0; visibility:hidden; transform: translateY(12px);
+  transition: all .3s ease;
+}
+.gko-back-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+.gko-back-top:hover{ background: var(--gko-rust); color:#fff; border-style: solid; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 991.98px){
+  .gko-section{ padding: 70px 0; }
+  .gko-navbar .navbar-collapse{
+    background: var(--gko-bg-alt);
+    border-radius: var(--gko-radius-md);
+    padding: 1rem 1.25rem; margin-top: .75rem;
+    border: 1.5px dashed var(--gko-border);
+  }
+  .gko-pack-highlight{ transform:none; }
+  .gko-pack-highlight:hover{ transform: translateY(-8px); }
+}
+
+/* =========================================================
+   PAGE BANNER (halaman selain landing page)
+   ========================================================= */
+.gko-page-banner{
+  position: relative;
+  padding: 170px 0 90px;
+  overflow: hidden;
+}
+.gko-page-banner-media{ position:absolute; inset:0; z-index:0; }
+.gko-page-banner-media img{ width:100%; height:100%; object-fit:cover; }
+.gko-page-banner-overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(12,15,9,.82) 0%, rgba(12,15,9,.7) 40%, rgba(18,22,14,.98) 100%);
+}
+.gko-breadcrumb{
+  display:flex; align-items:center; gap:.5rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  font-size:.78rem;
+  color: rgba(243,238,221,.7);
+  margin-bottom: 1.1rem;
+}
+.gko-breadcrumb a{ color: rgba(243,238,221,.7); }
+.gko-breadcrumb a:hover{ color: var(--gko-rust); }
+.gko-breadcrumb i{ font-size:.7rem; }
+.gko-page-banner-title{
+  color:#fff;
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+  margin-bottom: .6rem;
+}
+.gko-page-banner-text{ color: rgba(243,238,221,.82); max-width: 620px; font-size: 1.05rem; }
+
+/* =========================================================
+   TIMELINE — perjalanan/milestone (urutan nyata)
+   ========================================================= */
+.gko-timeline{ position: relative; padding-left: 2.4rem; }
+.gko-timeline::before{
+  content:"";
+  position:absolute; left:9px; top:6px; bottom:6px;
+  width:3px;
+  background-image: linear-gradient(var(--gko-rope), var(--gko-rope));
+  background-size: 3px 14px;
+  background-repeat: repeat-y;
+  opacity:.55;
+}
+.gko-timeline-item{ position: relative; padding-bottom: 2.4rem; }
+.gko-timeline-item:last-child{ padding-bottom: 0; }
+.gko-timeline-dot{
+  position:absolute; left:-2.4rem; top:2px;
+  width:22px; height:22px; border-radius:50%;
+  background: var(--gko-rust);
+  border: 3px solid var(--gko-bg);
+  box-shadow: 0 0 0 2px rgba(217,123,41,.4);
+}
+.gko-timeline-year{
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  color: var(--gko-rust);
+  font-size:.85rem;
+  font-weight:600;
+  margin-bottom:.3rem;
+  display:block;
+}
+.gko-timeline-item h3{ font-size:1.15rem; color: var(--gko-text); margin-bottom:.4rem; }
+.gko-timeline-item p{ color: var(--gko-text-muted); font-size:.92rem; margin-bottom:0; max-width: 520px; }
+
+/* =========================================================
+   VISI & MISI
+   ========================================================= */
+.gko-vm-card{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 2.2rem 2rem;
+  height:100%;
+}
+.gko-vm-card .gko-vm-icon{
+  width:58px; height:58px; border-radius: 16px;
+  background: rgba(217,123,41,.14);
+  color: var(--gko-rust);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem; margin-bottom: 1.25rem;
+}
+.gko-vm-card h3{ font-size:1.3rem; color: var(--gko-text); margin-bottom:.75rem; }
+.gko-vm-card p{ color: var(--gko-text-muted); margin-bottom:0; }
+.gko-vm-card ul{ list-style:none; padding:0; margin:0; }
+.gko-vm-card ul li{
+  display:flex; gap:.6rem; align-items:flex-start;
+  color: var(--gko-text-muted); font-size:.95rem; margin-bottom:.7rem;
+}
+.gko-vm-card ul li i{ color: var(--gko-moss); margin-top:.2rem; }
+
+/* =========================================================
+   NILAI-NILAI (values) — varian trail-card tanpa nomor pos
+   ========================================================= */
+.gko-value-card{
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.28);
+  border-radius: var(--gko-radius-md);
+  padding: 2rem 1.5rem;
+  height:100%;
+  color: var(--gko-ink);
+  box-shadow: var(--gko-shadow-canvas);
+  transition: transform .25s ease;
+}
+.gko-value-card:hover{ transform: translateY(-6px) rotate(.4deg); }
+.gko-value-card .gko-trail-icon{ background: rgba(217,123,41,.16); color: var(--gko-rust-dark); }
+.gko-value-card h3{ font-size:1.05rem; color: var(--gko-ink); margin-bottom:.5rem; }
+.gko-value-card p{ color: rgba(43,36,24,.72); font-size:.9rem; margin-bottom:0; }
+
+/* =========================================================
+   TIM / FASILITATOR
+   ========================================================= */
+.gko-team-card{
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow:hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  height:100%;
+}
+.gko-team-card:hover{ transform: translateY(-8px); box-shadow: var(--gko-shadow); }
+.gko-team-media{ aspect-ratio: 4/4.4; overflow:hidden; position:relative; }
+.gko-team-media img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.gko-team-card:hover .gko-team-media img{ transform: scale(1.07); }
+.gko-team-social{
+  position:absolute; left:0; right:0; bottom:-50px;
+  display:flex; justify-content:center; gap:.5rem;
+  padding: 14px 0;
+  background: linear-gradient(180deg, rgba(18,22,14,0), rgba(18,22,14,.9));
+  transition: bottom .25s ease;
+}
+.gko-team-card:hover .gko-team-social{ bottom:0; }
+.gko-team-social a{
+  width:34px; height:34px; border-radius:50%;
+  background: var(--gko-canvas); color: var(--gko-ink);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem;
+}
+.gko-team-social a:hover{ background: var(--gko-rust); color:#fff; }
+.gko-team-body{ padding: 1.25rem 1.4rem 1.5rem; text-align:center; }
+.gko-team-body h3{ font-size:1.05rem; color: var(--gko-text); margin-bottom:.2rem; }
+.gko-team-body span{ font-size:.82rem; color: var(--gko-rust); font-family: var(--gko-font-tag); text-transform: uppercase; letter-spacing:.04em; }
+
+/* =========================================================
+   STATS / PENCAPAIAN
+   ========================================================= */
+.gko-stats-strip{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 2.5rem 1.5rem;
+}
+.gko-stat-block{ text-align:center; }
+.gko-stat-block strong{
+  display:block;
+  font-family: var(--gko-font-display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--gko-rust);
+}
+.gko-stat-block span{
+  display:block;
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing:.04em;
+  font-size:.78rem;
+  margin-top:.3rem;
+}
+
+/* =========================================================
+   PARTNER / SERTIFIKASI STRIP
+   ========================================================= */
+.gko-partner-strip{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap: 2.5rem 3rem;
+}
+.gko-partner-item{
+  display:flex; align-items:center; gap:.6rem;
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing:.04em;
+  font-size:.85rem;
+  opacity:.75;
+  transition: opacity .2s ease, color .2s ease;
+}
+.gko-partner-item:hover{ opacity:1; color: var(--gko-text); }
+.gko-partner-item i{ font-size:1.3rem; color: var(--gko-rust); }
+
+/* =========================================================
+   TAMBAHAN UNTUK style.css — GEMILANG KATUN OUTBOUND
+   Salin blok di bawah ini ke akhir file assets/css/style.css
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   FILTER TABS
+   Dipakai di paket-outbound.html & galeri.html
+   --------------------------------------------------------- */
+.gko-filter-tabs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+}
+.gko-filter-btn{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .55rem 1.3rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+}
+.gko-filter-btn:hover{
+  color: var(--gko-text);
+  border-color: rgba(243,238,221,.4);
+}
+.gko-filter-btn.active{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  border-style: solid;
+  color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(217,123,41,.6);
+}
+
+/* ---------------------------------------------------------
+   GALLERY — item persegi untuk grid fleksibel (galeri.html)
+   Melengkapi .gko-gallery-item / .gko-gallery-overlay yang
+   sudah ada (dipakai untuk bento grid gko-g-1..6)
+   --------------------------------------------------------- */
+.gko-gallery-square{
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+.gko-lightbox-trigger{ cursor: pointer; }
+
+/* ---------------------------------------------------------
+   LIGHTBOX MODAL
+   --------------------------------------------------------- */
+.gko-lightbox-modal .modal-content{
+  background: var(--gko-bg-deep);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.gko-lightbox-modal img{
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: #000;
+}
+.gko-lightbox-caption{
+  padding: 1rem 1.4rem;
+  color: var(--gko-text-muted);
+  font-size: .92rem;
+  text-align: center;
+}
+.gko-lightbox-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(12,15,9,.6);
+  border-radius: 50%;
+  padding: .5rem;
+  opacity: 1;
+}
+
+/* =========================================================
+   TAMBAHAN UNTUK style.css — GEMILANG KATUN OUTBOUND
+   Salin blok di bawah ini ke akhir file assets/css/style.css
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   FILTER TABS
+   Dipakai di paket-outbound.html & galeri.html
+   --------------------------------------------------------- */
+.gko-filter-tabs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+}
+.gko-filter-btn{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .55rem 1.3rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+}
+.gko-filter-btn:hover{
+  color: var(--gko-text);
+  border-color: rgba(243,238,221,.4);
+}
+.gko-filter-btn.active{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  border-style: solid;
+  color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(217,123,41,.6);
+}
+
+/* ---------------------------------------------------------
+   GALLERY — item persegi untuk grid fleksibel (galeri.html)
+   Melengkapi .gko-gallery-item / .gko-gallery-overlay yang
+   sudah ada (dipakai untuk bento grid gko-g-1..6)
+   --------------------------------------------------------- */
+.gko-gallery-square{
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+.gko-lightbox-trigger{ cursor: pointer; }
+
+/* ---------------------------------------------------------
+   LIGHTBOX MODAL
+   --------------------------------------------------------- */
+.gko-lightbox-modal .modal-content{
+  background: var(--gko-bg-deep);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.gko-lightbox-modal img{
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: #000;
+}
+.gko-lightbox-caption{
+  padding: 1rem 1.4rem;
+  color: var(--gko-text-muted);
+  font-size: .92rem;
+  text-align: center;
+}
+.gko-lightbox-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(12,15,9,.6);
+  border-radius: 50%;
+  padding: .5rem;
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   BLOG — artikel unggulan (featured post)
+   --------------------------------------------------------- */
+.gko-blog-featured{
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--gko-shadow);
+}
+.gko-blog-featured-media{ height: 100%; min-height: 320px; }
+.gko-blog-featured-media img{ width: 100%; height: 100%; object-fit: cover; }
+.gko-blog-featured-body{
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gko-blog-featured-body h2{
+  font-family: var(--gko-font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--gko-text);
+  margin: .9rem 0 .9rem;
+}
+
+/* ---------------------------------------------------------
+   BLOG — tag & meta info
+   --------------------------------------------------------- */
+.gko-blog-tag{
+  display: inline-flex;
+  align-items: center;
+  background: rgba(217,123,41,.14);
+  border: 1.5px dashed rgba(217,123,41,.5);
+  color: var(--gko-rust);
+  font-family: var(--gko-font-tag);
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  width: fit-content;
+}
+.gko-blog-featured .gko-blog-tag{ margin-bottom: .5rem; }
+.gko-blog-media .gko-blog-tag{
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: var(--gko-canvas);
+  border-color: rgba(43,36,24,.35);
+  color: var(--gko-ink);
+}
+.gko-blog-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: .76rem;
+  color: var(--gko-text-muted);
+  margin: .6rem 0;
+}
+.gko-blog-meta i{ margin-right: .3rem; color: var(--gko-rust); }
+
+/* ---------------------------------------------------------
+   BLOG — kartu artikel
+   --------------------------------------------------------- */
+.gko-blog-card{
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gko-blog-card:hover{ transform: translateY(-8px); box-shadow: var(--gko-shadow); }
+.gko-blog-media{ position: relative; aspect-ratio: 16/10.5; overflow: hidden; }
+.gko-blog-media img{ width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.gko-blog-card:hover .gko-blog-media img{ transform: scale(1.06); }
+.gko-blog-body{ padding: 1.5rem 1.5rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+.gko-blog-body h3{
+  font-size: 1.1rem;
+  color: var(--gko-text);
+  margin-bottom: .5rem;
+  line-height: 1.4;
+}
+.gko-blog-body p{ font-size: .92rem; margin-bottom: 1rem; }
+.gko-blog-body .gko-link{ margin-top: auto; font-size: .9rem; }
+
+/* ---------------------------------------------------------
+   BLOG — pagination
+   --------------------------------------------------------- */
+.gko-blog-pagination ul{
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gko-blog-pagination a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gko-border);
+  color: var(--gko-text);
+  font-family: var(--gko-font-tag);
+  font-weight: 600;
+  transition: all .2s ease;
+}
+.gko-blog-pagination a:hover{ border-color: var(--gko-rust); color: var(--gko-rust); }
+.gko-blog-pagination a.active{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  border-style: solid;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   NEWSLETTER
+   --------------------------------------------------------- */
+.gko-newsletter-card{
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.28);
+  border-radius: var(--gko-radius-lg);
+  padding: 2.75rem 3rem;
+  box-shadow: var(--gko-shadow-canvas);
+}
+.gko-newsletter-card .gko-section-title{ color: var(--gko-ink); }
+.gko-newsletter-form{
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+.gko-newsletter-form input{
+  flex: 1 1 200px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(43,36,24,.25);
+  padding: .7rem 1.2rem;
+  background: #fff;
+}
+.gko-newsletter-form input:focus{
+  box-shadow: 0 0 0 3px rgba(217,123,41,.25);
+  border-color: var(--gko-rust);
+}
+.gko-newsletter-form button{ flex-shrink: 0; }
+
+@media (max-width: 767.98px){
+  .gko-blog-featured-body{ padding: 1.75rem; }
+  .gko-newsletter-card{ padding: 2rem; }
+}
+
+/* =========================================================
+   TAMBAHAN UNTUK style.css — GEMILANG KATUN OUTBOUND
+   Salin blok di bawah ini ke akhir file assets/css/style.css
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   FILTER TABS
+   Dipakai di paket-outbound.html & galeri.html
+   --------------------------------------------------------- */
+.gko-filter-tabs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+}
+.gko-filter-btn{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .55rem 1.3rem;
+  border-radius: 999px;
+  transition: all .2s ease;
+}
+.gko-filter-btn:hover{
+  color: var(--gko-text);
+  border-color: rgba(243,238,221,.4);
+}
+.gko-filter-btn.active{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  border-style: solid;
+  color: #fff;
+  box-shadow: 0 10px 22px -10px rgba(217,123,41,.6);
+}
+
+/* ---------------------------------------------------------
+   GALLERY — item persegi untuk grid fleksibel (galeri.html)
+   Melengkapi .gko-gallery-item / .gko-gallery-overlay yang
+   sudah ada (dipakai untuk bento grid gko-g-1..6)
+   --------------------------------------------------------- */
+.gko-gallery-square{
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+.gko-lightbox-trigger{ cursor: pointer; }
+
+/* ---------------------------------------------------------
+   LIGHTBOX MODAL
+   --------------------------------------------------------- */
+.gko-lightbox-modal .modal-content{
+  background: var(--gko-bg-deep);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.gko-lightbox-modal img{
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: #000;
+}
+.gko-lightbox-caption{
+  padding: 1rem 1.4rem;
+  color: var(--gko-text-muted);
+  font-size: .92rem;
+  text-align: center;
+}
+.gko-lightbox-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(12,15,9,.6);
+  border-radius: 50%;
+  padding: .5rem;
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   BLOG — artikel unggulan (featured post)
+   --------------------------------------------------------- */
+.gko-blog-featured{
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--gko-shadow);
+}
+.gko-blog-featured-media{ height: 100%; min-height: 320px; }
+.gko-blog-featured-media img{ width: 100%; height: 100%; object-fit: cover; }
+.gko-blog-featured-body{
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gko-blog-featured-body h2{
+  font-family: var(--gko-font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--gko-text);
+  margin: .9rem 0 .9rem;
+}
+
+/* ---------------------------------------------------------
+   BLOG — tag & meta info
+   --------------------------------------------------------- */
+.gko-blog-tag{
+  display: inline-flex;
+  align-items: center;
+  background: rgba(217,123,41,.14);
+  border: 1.5px dashed rgba(217,123,41,.5);
+  color: var(--gko-rust);
+  font-family: var(--gko-font-tag);
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  width: fit-content;
+}
+.gko-blog-featured .gko-blog-tag{ margin-bottom: .5rem; }
+.gko-blog-media .gko-blog-tag{
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: var(--gko-canvas);
+  border-color: rgba(43,36,24,.35);
+  color: var(--gko-ink);
+}
+.gko-blog-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: .76rem;
+  color: var(--gko-text-muted);
+  margin: .6rem 0;
+}
+.gko-blog-meta i{ margin-right: .3rem; color: var(--gko-rust); }
+
+/* ---------------------------------------------------------
+   BLOG — kartu artikel
+   --------------------------------------------------------- */
+.gko-blog-card{
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gko-blog-card:hover{ transform: translateY(-8px); box-shadow: var(--gko-shadow); }
+.gko-blog-media{ position: relative; aspect-ratio: 16/10.5; overflow: hidden; }
+.gko-blog-media img{ width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.gko-blog-card:hover .gko-blog-media img{ transform: scale(1.06); }
+.gko-blog-body{ padding: 1.5rem 1.5rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+.gko-blog-body h3{
+  font-size: 1.1rem;
+  color: var(--gko-text);
+  margin-bottom: .5rem;
+  line-height: 1.4;
+}
+.gko-blog-body p{ font-size: .92rem; margin-bottom: 1rem; }
+.gko-blog-body .gko-link{ margin-top: auto; font-size: .9rem; }
+
+/* ---------------------------------------------------------
+   BLOG — pagination
+   --------------------------------------------------------- */
+.gko-blog-pagination ul{
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gko-blog-pagination a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gko-border);
+  color: var(--gko-text);
+  font-family: var(--gko-font-tag);
+  font-weight: 600;
+  transition: all .2s ease;
+}
+.gko-blog-pagination a:hover{ border-color: var(--gko-rust); color: var(--gko-rust); }
+.gko-blog-pagination a.active{
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  border-style: solid;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   NEWSLETTER
+   --------------------------------------------------------- */
+.gko-newsletter-card{
+  background: var(--gko-canvas);
+  border: 2px dashed rgba(43,36,24,.28);
+  border-radius: var(--gko-radius-lg);
+  padding: 2.75rem 3rem;
+  box-shadow: var(--gko-shadow-canvas);
+}
+.gko-newsletter-card .gko-section-title{ color: var(--gko-ink); }
+.gko-newsletter-form{
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+.gko-newsletter-form input{
+  flex: 1 1 200px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(43,36,24,.25);
+  padding: .7rem 1.2rem;
+  background: #fff;
+}
+.gko-newsletter-form input:focus{
+  box-shadow: 0 0 0 3px rgba(217,123,41,.25);
+  border-color: var(--gko-rust);
+}
+.gko-newsletter-form button{ flex-shrink: 0; }
+
+@media (max-width: 767.98px){
+  .gko-blog-featured-body{ padding: 1.75rem; }
+  .gko-newsletter-card{ padding: 2rem; }
+}
+
+/* ---------------------------------------------------------
+   KONTAK — kartu kontak cepat
+   --------------------------------------------------------- */
+.gko-contact-card{
+  display: block;
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 2rem 1.75rem;
+  height: 100%;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.gko-contact-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--gko-shadow);
+  border-color: var(--gko-rust);
+}
+.gko-contact-icon{
+  width: 54px; height: 54px;
+  border-radius: 14px;
+  background: rgba(217,123,41,.14);
+  color: var(--gko-rust);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.1rem;
+}
+.gko-contact-card h3{ font-size: 1.1rem; color: var(--gko-text); margin-bottom: .35rem; }
+.gko-contact-card p{ color: var(--gko-text-muted); font-size: .92rem; margin-bottom: .9rem; }
+
+/* ---------------------------------------------------------
+   KONTAK — form
+   --------------------------------------------------------- */
+.gko-contact-form label{
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  font-size: .78rem;
+  color: var(--gko-text-muted);
+  margin-bottom: .35rem;
+}
+.gko-contact-form .form-control,
+.gko-contact-form .form-select{
+  background: var(--gko-surface);
+  border: 1.5px solid var(--gko-border);
+  color: var(--gko-text);
+  border-radius: var(--gko-radius-sm);
+  padding: .65rem 1rem;
+}
+.gko-contact-form .form-control::placeholder{ color: rgba(243,238,221,.4); }
+.gko-contact-form .form-control:focus,
+.gko-contact-form .form-select:focus{
+  background: var(--gko-surface);
+  color: var(--gko-text);
+  border-color: var(--gko-rust);
+  box-shadow: 0 0 0 3px rgba(217,123,41,.2);
+}
+.gko-contact-form .form-select option{ background: var(--gko-surface); color: var(--gko-text); }
+
+/* ---------------------------------------------------------
+   KONTAK — info card samping (jam operasional, dll)
+   --------------------------------------------------------- */
+.gko-info-card{
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+.gko-info-card h3{ font-size: 1.05rem; color: var(--gko-text); margin: .9rem 0 .9rem; }
+.gko-info-card .gko-footer-list li{
+  display: flex; align-items: flex-start; gap: .5rem;
+  color: var(--gko-text-muted); font-size: .92rem;
+}
+.gko-info-card .gko-footer-list i{ color: var(--gko-moss); margin-top: .2rem; }
+
+/* ---------------------------------------------------------
+   KONTAK — peta
+   --------------------------------------------------------- */
+.gko-map-wrap{
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  border: 1.5px dashed var(--gko-border);
+  height: 420px;
+  box-shadow: var(--gko-shadow);
+}
