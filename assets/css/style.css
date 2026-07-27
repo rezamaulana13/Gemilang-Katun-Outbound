@@ -1105,7 +1105,6 @@ a:focus-visible,button:focus-visible,.accordion-button:focus-visible{
   .gko-blog-featured-body{ padding: 1.75rem; }
   .gko-newsletter-card{ padding: 2rem; }
 }
-
 /* =========================================================
    TAMBAHAN UNTUK style.css — GEMILANG KATUN OUTBOUND
    Salin blok di bawah ini ke akhir file assets/css/style.css
@@ -1433,3 +1432,26 @@ a:focus-visible,button:focus-visible,.accordion-button:focus-visible{
   height: 420px;
   box-shadow: var(--gko-shadow);
 }
+
+/* ---------------------------------------------------------
+   PAKET — tag jenis aktivitas di pojok kiri atas thumbnail
+   (pelengkap filter segmen: korporat/sekolah/kampus/keluarga)
+   --------------------------------------------------------- */
+.gko-pack-tag{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: rgba(12,15,9,.65);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(243,238,221,.3);
+  color: var(--gko-text);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: .68rem;
+  font-weight: 600;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+}
+.gko-pack-media{ position: relative; }

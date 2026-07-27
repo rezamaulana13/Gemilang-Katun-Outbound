@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jungle Survival Camp - Gemilang Katun Outbound</title>
+<meta name="description" content="Detail paket Jungle Survival Camp dari Gemilang Katun Outbound. Simulasi bertahan hidup dan navigasi tim di hutan.">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP + ICONS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<style>
+/* =========================================================
+   DETAIL PAKET — STYLE TAMBAHAN
+   ========================================================= */
+
+/* ---------- HERO DETAIL ---------- */
+.gko-detail-hero {
+  position: relative;
+  padding: 160px 0 70px;
+  background: linear-gradient(135deg, rgba(12,15,9,0.88) 0%, rgba(18,22,14,0.75) 100%),
+              url('https://picsum.photos/seed/survival-hero/1920/800') center center / cover no-repeat;
+  overflow: hidden;
+}
+.gko-detail-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(217,123,41,0.06) 0%, transparent 60%);
+  z-index: 1;
+}
+.gko-detail-hero .container { position: relative; z-index: 2; }
+
+.gko-detail-hero .gko-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: rgba(243,238,221,0.7);
+  margin-bottom: 1.1rem;
+}
+.gko-detail-hero .gko-breadcrumb a { color: rgba(243,238,221,0.7); text-decoration: none; }
+.gko-detail-hero .gko-breadcrumb a:hover { color: var(--gko-rust); }
+.gko-detail-hero .gko-breadcrumb i { font-size: 0.7rem; margin: 0 0.2rem; }
+.gko-detail-hero .gko-breadcrumb span { color: var(--gko-rust); }
+
+.gko-detail-hero h1 {
+  font-family: var(--gko-font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--gko-text);
+  line-height: 1.15;
+}
+.gko-detail-hero h1 span { color: var(--gko-rust); }
+
+.gko-detail-hero .subtitle {
+  font-size: 1.05rem;
+  color: rgba(243,238,221,0.85);
+  max-width: 560px;
+  margin-top: 0.6rem;
+}
+
+.gko-detail-hero .badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+.gko-detail-hero .badge-item {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(243,238,221,0.12);
+  color: var(--gko-text);
+  font-family: var(--gko-font-tag);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+}
+.gko-detail-hero .badge-item i { color: var(--gko-rust); margin-right: 0.4rem; }
+.gko-detail-hero .badge-item.badge-gold {
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  color: #fff;
+}
+.gko-detail-hero .badge-item.badge-gold i { color: #fff; }
+
+/* ---------- INFO RINGKAS ---------- */
+.gko-detail-info {
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+}
+.gko-detail-info .gko-info-card {
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 1.8rem 2rem;
+}
+.gko-detail-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--gko-border);
+}
+.gko-detail-info .info-item:last-child { border-bottom: none; }
+.gko-detail-info .info-item i {
+  font-size: 1.2rem;
+  color: var(--gko-rust);
+  min-width: 30px;
+}
+.gko-detail-info .info-item .label {
+  font-weight: 600;
+  color: var(--gko-text);
+  min-width: 110px;
+  font-size: 0.88rem;
+}
+.gko-detail-info .info-item .value {
+  color: var(--gko-text-muted);
+  font-size: 0.88rem;
+}
+.gko-detail-info .info-item .value strong { color: var(--gko-rust); }
+
+/* ---------- PRICE BOX ---------- */
+.gko-price-box {
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-radius: var(--gko-radius-lg);
+  padding: 2rem 2rem 2.2rem;
+  color: #fff;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 16px 40px -16px rgba(217,123,41,0.5);
+}
+.gko-price-box .price {
+  font-family: var(--gko-font-display);
+  font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+.gko-price-box .price small {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+.gko-price-box .price-desc {
+  opacity: 0.85;
+  margin: 0.5rem 0 1.4rem;
+  font-size: 0.92rem;
+}
+.gko-price-box .btn-wa {
+  background: #25D366;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.gko-price-box .btn-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px -10px rgba(0,0,0,0.4);
+  color: #fff;
+}
+.gko-price-box .btn-outline-light {
+  background: transparent;
+  border: 1.5px dashed rgba(255,255,255,0.35);
+  color: #fff;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.7rem;
+  transition: all 0.25s ease;
+}
+.gko-price-box .btn-outline-light:hover {
+  background: #fff;
+  color: var(--gko-rust-dark);
+  border-color: #fff;
+  border-style: solid;
+}
+
+/* ---------- SECTION DETAIL ---------- */
+.gko-detail-section {
+  padding: 60px 0;
+}
+.gko-detail-section.gko-section-alt {
+  background: var(--gko-bg-alt);
+}
+
+.gko-section-title-sm {
+  font-family: var(--gko-font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  color: var(--gko-text);
+  margin-bottom: 0.5rem;
+}
+.gko-section-title-sm span { color: var(--gko-rust); }
+
+/* ---------- FASILITAS GRID ---------- */
+.gko-fac-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+.gko-fac-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-md);
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gko-text);
+}
+.gko-fac-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--gko-shadow);
+  border-color: var(--gko-rust);
+}
+.gko-fac-item i {
+  color: var(--gko-rust);
+  font-size: 1.2rem;
+  min-width: 28px;
+}
+
+/* ---------- ITINERARY (timeline style) ---------- */
+.gko-itinerary {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  padding-left: 1.8rem;
+}
+.gko-itinerary::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2.5px;
+  background-image: linear-gradient(var(--gko-rope), var(--gko-rope));
+  background-size: 2.5px 14px;
+  background-repeat: repeat-y;
+  opacity: 0.5;
+}
+.gko-itinerary li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  padding: 1rem 1.2rem;
+  background: var(--gko-surface);
+  border-radius: var(--gko-radius-md);
+  margin-bottom: 0.7rem;
+  border-left: 3px solid var(--gko-rust);
+  transition: all 0.25s ease;
+}
+.gko-itinerary li:hover {
+  transform: translateX(6px);
+  box-shadow: var(--gko-shadow);
+}
+.gko-itinerary li .time {
+  font-weight: 700;
+  color: var(--gko-rust);
+  min-width: 80px;
+  font-size: 0.88rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.gko-itinerary li .activity {
+  font-weight: 600;
+  color: var(--gko-text);
+  font-size: 0.92rem;
+}
+.gko-itinerary li .desc {
+  font-size: 0.85rem;
+  color: var(--gko-text-muted);
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  margin-top: 0.1rem;
+}
+
+/* ---------- LIST CHECK ---------- */
+.gko-list-check {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gko-list-check li {
+  padding: 0.6rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+  color: var(--gko-text-muted);
+  border-bottom: 1px solid var(--gko-border);
+}
+.gko-list-check li:last-child { border-bottom: none; }
+.gko-list-check li i { font-size: 1.1rem; }
+.gko-list-check li .bi-check-circle-fill { color: var(--gko-moss); }
+.gko-list-check li .bi-x-circle-fill { color: #dc3545; }
+
+/* ---------- REKOMENDASI ---------- */
+.gko-recom-card {
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.gko-recom-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--gko-shadow);
+  border-color: var(--gko-rust);
+}
+.gko-recom-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.gko-recom-card .body {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+.gko-recom-card .body h4 {
+  font-family: var(--gko-font-display);
+  font-size: 1.05rem;
+  color: var(--gko-text);
+  margin-bottom: 0.2rem;
+}
+.gko-recom-card .body p {
+  font-size: 0.85rem;
+  color: var(--gko-text-muted);
+  margin-bottom: 0.5rem;
+}
+.gko-recom-card .body .price-tag {
+  font-weight: 700;
+  color: var(--gko-rust);
+  font-size: 0.95rem;
+}
+.gko-recom-card .body .price-tag small {
+  font-weight: 400;
+  color: var(--gko-text-muted);
+  font-size: 0.8rem;
+}
+
+/* ---------- INFO BOX (catatan tambahan) ---------- */
+.gko-info-box {
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-md);
+  padding: 1.2rem 1.4rem;
+  border-left: 4px solid var(--gko-rust);
+}
+.gko-info-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gko-text-muted);
+}
+.gko-info-box p strong { color: var(--gko-text); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991.98px) {
+  .gko-detail-hero { padding: 140px 0 50px; }
+  .gko-detail-info { margin-top: -30px; }
+  .gko-detail-section { padding: 40px 0; }
+  .gko-detail-info .info-item .label { min-width: 90px; font-size: 0.82rem; }
+}
+@media (max-width: 767.98px) {
+  .gko-detail-hero { padding: 120px 0 40px; }
+  .gko-detail-hero h1 { font-size: 1.8rem; }
+  .gko-detail-hero .subtitle { font-size: 0.95rem; }
+  .gko-detail-info .info-item { flex-wrap: wrap; gap: 0.3rem; }
+  .gko-detail-info .info-item .label { min-width: 100%; }
+  .gko-price-box { padding: 1.5rem; }
+  .gko-price-box .price { font-size: 2rem; }
+  .gko-itinerary { padding-left: 1.2rem; }
+  .gko-itinerary li { padding: 0.8rem 1rem; }
+  .gko-itinerary li .time { min-width: 70px; font-size: 0.8rem; }
+  .gko-fac-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+@media (max-width: 575.98px) {
+  .gko-detail-hero h1 { font-size: 1.5rem; }
+  .gko-detail-hero .badge-item { font-size: 0.65rem; padding: 0.25rem 0.8rem; }
+  .gko-fac-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .gko-fac-item { font-size: 0.8rem; padding: 0.7rem 0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top gko-navbar" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand gko-brand" href="index.html">
+      <span class="gko-brand-icon"><i class="bi bi-compass-fill"></i></span>
+      <span class="gko-brand-text">Gemilang Katun <em>Outbound</em></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link active" href="paket-outbound.html">Paket</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a href="https://wa.me/6281234567890" class="btn gko-btn-primary btn-sm px-3">Booking</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO DETAIL ================= -->
+<header class="gko-detail-hero">
+  <div class="container">
+    <nav class="gko-breadcrumb">
+      <a href="index.html">Beranda</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="paket-outbound.html">Paket</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>Jungle Survival Camp</span>
+    </nav>
+    <h1>Jungle <span>Survival Camp</span></h1>
+    <p class="subtitle">Simulasi bertahan hidup ringan &amp; navigasi tim di hutan. Latih keberanian, problem solving, dan solidaritas dalam kondisi alami.</p>
+    <div class="badge-wrap">
+      <span class="badge-item"><i class="bi bi-clock"></i> 2 Hari 1 Malam</span>
+      <span class="badge-item"><i class="bi bi-people"></i> 20-60 Peserta</span>
+      <span class="badge-item"><i class="bi bi-tag"></i> Adventure</span>
+      <span class="badge-item badge-gold"><i class="bi bi-star-fill"></i> Ekstrem Ringan</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= INFO + HARGA ================= -->
+<section class="gko-detail-info">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="gko-info-card">
+          <div class="info-item">
+            <i class="bi bi-clock"></i>
+            <span class="label">Durasi</span>
+            <span class="value">2 Hari 1 Malam</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-people"></i>
+            <span class="label">Minimal Peserta</span>
+            <span class="value"><strong>20 orang</strong> (maks. 60)</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-geo-alt"></i>
+            <span class="label">Lokasi</span>
+            <span class="value">Kawasan Hutan (Jabar / Jateng)</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-person-badge"></i>
+            <span class="label">Tim Pendamping</span>
+            <span class="value">2 instruktur survival + 3 asisten</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-calendar-check"></i>
+            <span class="label">Booking Minimal</span>
+            <span class="value">H-21 sebelum acara</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-tree"></i>
+            <span class="label">Tingkat Kesulitan</span>
+            <span class="value">Sedang (pemandu berpengalaman)</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="gko-price-box">
+          <div class="price">Rp525.000 <small>/ peserta</small></div>
+          <p class="price-desc">Sudah termasuk camping semi-permanen, konsumsi 4x, &amp; perlengkapan survival</p>
+          <a href="https://wa.me/6281234567890?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20paket%20Jungle%20Survival%20Camp" target="_blank" class="btn-wa">
+            <i class="bi bi-whatsapp"></i> Pesan Sekarang
+          </a>
+          <a href="kontak.html" class="btn-outline-light">Konsultasi Dulu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DESKRIPSI ================= -->
+<section class="gko-detail-section">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <h2 class="gko-section-title-sm">Tentang <span>Paket Ini</span></h2>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--gko-text-muted);">
+          <strong>Jungle Survival Camp</strong> adalah paket outbound petualangan yang mensimulasikan 
+          aktivitas bertahan hidup di alam liar dengan tetap mengedepankan <strong>keamanan dan kenyamanan</strong>. 
+          Peserta akan belajar <strong>navigasi hutan, teknik survival dasar, dan kerja sama tim</strong> 
+          dalam situasi yang menantang namun tetap terkendali.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--gko-text-muted);">
+          Didampingi oleh <strong>instruktur survival berpengalaman</strong> dan peralatan yang memadai, 
+          paket ini cocok untuk <strong>komunitas petualang, mahasiswa, atau perusahaan</strong> yang ingin 
+          menguji mental dan kekompakan tim di luar zona nyaman.
+        </p>
+
+        <h4 style="font-family: var(--gko-font-display); margin-top: 2rem; color: var(--gko-rust); font-size: 1.2rem;">
+          <i class="bi bi-compass" style="color: var(--gko-rust);"></i> Aktivitas yang Dilalui
+        </h4>
+        <div class="row g-2 mt-2">
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-map"></i> Navigasi Hutan</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-fire"></i> Membuat Api</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-house"></i> Shelter Building</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-water"></i> Water Filter</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-binoculars"></i> Jelajah Rimba</div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="gko-fac-item"><i class="bi bi-people"></i> Team Challenge</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <h3 style="font-family: var(--gko-font-display); font-size: 1.4rem; color: var(--gko-text); margin-bottom: 1.2rem;">
+          <span style="color: var(--gko-rust);">Itinerary</span> 2 Hari
+        </h3>
+        
+        <!-- Hari 1 -->
+        <h4 style="font-family: var(--gko-font-tag); font-size: 0.85rem; color: var(--gko-rust); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 0.5rem;">
+          <i class="bi bi-sun"></i> Hari 1 — Survival Basics
+        </h4>
+        <ul class="gko-itinerary">
+          <li>
+            <span class="time">08:00 - 09:00</span>
+            <span class="activity">Registrasi &amp; Briefing <span class="desc">Check-in &amp; pengenalan lokasi</span></span>
+          </li>
+          <li>
+            <span class="time">09:00 - 10:00</span>
+            <span class="activity">Pemanasan &amp; Ice Breaking <span class="desc">Games pembuka &amp; pembagian tim</span></span>
+          </li>
+          <li>
+            <span class="time">10:00 - 12:00</span>
+            <span class="activity">Navigasi Hutan <span class="desc">Belajar baca peta &amp; kompas</span></span>
+          </li>
+          <li>
+            <span class="time">12:00 - 13:00</span>
+            <span class="activity">Makan Siang <span class="desc">Bekal survival di alam</span></span>
+          </li>
+          <li>
+            <span class="time">13:00 - 15:00</span>
+            <span class="activity">Shelter Building <span class="desc">Membangun tempat berlindung</span></span>
+          </li>
+          <li>
+            <span class="time">15:00 - 17:00</span>
+            <span class="activity">Membuat Api &amp; Water Filter <span class="desc">Teknik survival dasar</span></span>
+          </li>
+          <li>
+            <span class="time">18:00 - 20:00</span>
+            <span class="activity">Malam Survival <span class="desc">Api unggun &amp; cerita petualangan</span></span>
+          </li>
+        </ul>
+
+        <!-- Hari 2 -->
+        <h4 style="font-family: var(--gko-font-tag); font-size: 0.85rem; color: var(--gko-rust); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 1.5rem;">
+          <i class="bi bi-moon-stars"></i> Hari 2 — Eksplorasi &amp; Challenge
+        </h4>
+        <ul class="gko-itinerary">
+          <li>
+            <span class="time">06:30 - 07:30</span>
+            <span class="activity">Morning Escape <span class="desc">Jelajah rimba &amp; tracking</span></span>
+          </li>
+          <li>
+            <span class="time">07:30 - 08:30</span>
+            <span class="activity">Sarapan <span class="desc">Menu survival ala kemah</span></span>
+          </li>
+          <li>
+            <span class="time">08:30 - 10:30</span>
+            <span class="activity">Team Challenge <span class="desc">Perlombaan survival antar tim</span></span>
+          </li>
+          <li>
+            <span class="time">10:30 - 12:00</span>
+            <span class="activity">Refleksi &amp; Evaluasi <span class="desc">Sesi belajar &amp; kesan</span></span>
+          </li>
+          <li>
+            <span class="time">12:00 - 13:00</span>
+            <span class="activity">Makan Siang &amp; Penutupan <span class="desc">Sertifikat &amp; foto bersama</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FASILITAS ================= -->
+<section class="gko-detail-section gko-section-alt">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="gko-section-title-sm">Fasilitas <span>Yang Didapat</span></h2>
+      <p class="gko-text-muted" style="font-size: 0.95rem;">Semua kebutuhan survival dan kenyamanan peserta sudah kami siapkan.</p>
+    </div>
+    <div class="gko-fac-grid">
+      <div class="gko-fac-item"><i class="bi bi-person-check"></i> Instruktur Survival</div>
+      <div class="gko-fac-item"><i class="bi bi-compass"></i> Peralatan Navigasi</div>
+      <div class="gko-fac-item"><i class="bi bi-tent"></i> Camping Semi-Permanen</div>
+      <div class="gko-fac-item"><i class="bi bi-cup-hot"></i> Konsumsi 4x</div>
+      <div class="gko-fac-item"><i class="bi bi-fire"></i> Peralatan Survival</div>
+      <div class="gko-fac-item"><i class="bi bi-camera"></i> Dokumentasi Foto</div>
+      <div class="gko-fac-item"><i class="bi bi-award"></i> Sertifikat Peserta</div>
+      <div class="gko-fac-item"><i class="bi bi-band-aid"></i> Tim Medis &amp; P3K</div>
+      <div class="gko-fac-item"><i class="bi bi-tree"></i> Area Hutan Aman</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INCLUDE / EXCLUDE ================= -->
+<section class="gko-detail-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3 style="font-family: var(--gko-font-display); font-size: 1.2rem; color: var(--gko-moss);">
+          <i class="bi bi-check-circle-fill" style="color: var(--gko-moss);"></i> Termasuk
+        </h3>
+        <ul class="gko-list-check">
+          <li><i class="bi bi-check-circle-fill"></i> 2 instruktur survival + 3 asisten</li>
+          <li><i class="bi bi-check-circle-fill"></i> Perlengkapan survival &amp; navigasi</li>
+          <li><i class="bi bi-check-circle-fill"></i> Camping semi-permanen</li>
+          <li><i class="bi bi-check-circle-fill"></i> Konsumsi 4x (snack, makan, dll)</li>
+          <li><i class="bi bi-check-circle-fill"></i> Dokumentasi foto</li>
+          <li><i class="bi bi-check-circle-fill"></i> Sertifikat peserta</li>
+          <li><i class="bi bi-check-circle-fill"></i> Tim medis &amp; P3K</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h3 style="font-family: var(--gko-font-display); font-size: 1.2rem; color: #dc3545;">
+          <i class="bi bi-x-circle-fill" style="color: #dc3545;"></i> Tidak Termasuk
+        </h3>
+        <ul class="gko-list-check">
+          <li><i class="bi bi-x-circle-fill"></i> Transportasi peserta (dapat diatur)</li>
+          <li><i class="bi bi-x-circle-fill"></i> Perlengkapan pribadi (jaket, sepatu)</li>
+          <li><i class="bi bi-x-circle-fill"></i> Asuransi pribadi peserta</li>
+        </ul>
+        <div class="gko-info-box mt-3">
+          <p><strong><i class="bi bi-info-circle" style="color: var(--gko-rust);"></i> Catatan:</strong> 
+            Wajib mengirimkan daftar peserta dan data kesehatan minimal H-14. 
+            Peserta dengan kondisi fisik tertentu akan diberikan pendampingan khusus. 
+            Peralatan survival dasar kami sediakan, peserta disarankan membawa perlengkapan pribadi (jaket, sepatu lapangan).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REKOMENDASI ================= -->
+<section class="gko-detail-section gko-section-alt">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="gko-section-title-sm">Paket <span>Lainnya</span></h2>
+      <p class="gko-text-muted" style="font-size: 0.95rem;">Masih bingung? Coba lihat rekomendasi kami.</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <a href="detail-fun-games-kekompakan.html" class="gko-recom-card">
+          <img src="https://picsum.photos/seed/fungames-recom/600/400" alt="Fun Games Kekompakan">
+          <div class="body">
+            <h4>Fun Games Kekompakan</h4>
+            <p>Permainan seru untuk membangun keakraban tim.</p>
+            <div class="price-tag">Rp275.000 <small>/ peserta</small></div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="detail-rope-course.html" class="gko-recom-card">
+          <img src="https://picsum.photos/seed/ropecourse-recom/600/400" alt="Rope Course">
+          <div class="body">
+            <h4>Rope Course &amp; Flying Fox</h4>
+            <p>Tantangan ketinggian untuk keberanian &amp; kepercayaan tim.</p>
+            <div class="price-tag">Rp450.000 <small>/ peserta</small></div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="detail-corporate-gathering.html" class="gko-recom-card">
+          <img src="https://picsum.photos/seed/corporate-recom/600/400" alt="Corporate Gathering">
+          <div class="body">
+            <h4>Corporate Gathering 2D1N</h4>
+            <p>Paket menginap dengan outbound &amp; leadership talk.</p>
+            <div class="price-tag">Rp1.200.000 <small>/ peserta</small></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="gko-cta" style="padding: 80px 0;">
+  <div class="gko-cta-media">
+    <img src="https://picsum.photos/seed/survival-cta/1920/700" alt="Jungle Survival Camp">
+    <div class="gko-cta-overlay"></div>
+  </div>
+  <div class="container position-relative">
+    <div class="row justify-content-center text-center" data-aos="zoom-in">
+      <div class="col-lg-8">
+        <span class="gko-eyebrow"><i class="bi bi-flag-fill"></i> Siap Berpetualang?</span>
+        <h2 class="gko-cta-title">Uji Nyali dan Kekompakan <br>di Hutan Liar!</h2>
+        <p class="gko-cta-text">
+          Konsultasikan kebutuhan petualangan timmu dengan kami. Kami bantu sesuaikan level tantangan dan durasi.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+          <a href="https://wa.me/6281234567890?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20paket%20Jungle%20Survival%20Camp" target="_blank" rel="noopener" class="btn gko-btn-primary btn-lg px-4">
+            <i class="bi bi-whatsapp"></i> Konsultasi via WhatsApp
+          </a>
+          <a href="paket-outbound.html" class="btn gko-btn-outline btn-lg px-4">Lihat Paket Lain</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="gko-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="gko-brand gko-brand-footer" href="index.html">
+          <span class="gko-brand-icon"><i class="bi bi-compass-fill"></i></span>
+          <span class="gko-brand-text">Gemilang Katun <em>Outbound</em></span>
+        </a>
+        <p class="gko-text-muted mt-3" style="font-size: 0.92rem;">
+          Merancang program outbound, team building, dan corporate gathering yang aman, seru,
+          dan berdampak nyata bagi kekompakan tim Anda.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="gko-social"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-tiktok"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h4 class="gko-footer-title">Navigasi</h4>
+        <ul class="gko-footer-list">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="about.html">Tentang</a></li>
+          <li><a href="paket-outbound.html">Paket</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h4 class="gko-footer-title">Paket Favorit</h4>
+        <ul class="gko-footer-list">
+          <li><a href="detail-fun-games-kekompakan.html">Fun Games</a></li>
+          <li><a href="detail-rope-course.html">Rope Course</a></li>
+          <li><a href="detail-corporate-gathering.html">Corporate 2D1N</a></li>
+          <li><a href="detail-jungle-survival.html">Jungle Survival</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4">
+        <h4 class="gko-footer-title">Hubungi Kami</h4>
+        <ul class="gko-footer-list gko-footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> Jl. Rindang Alam No. 21, Bogor, Jawa Barat</li>
+          <li><i class="bi bi-whatsapp"></i> +62 812-3456-7890</li>
+          <li><i class="bi bi-envelope-fill"></i> halo@gemilangkatun.id</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="gko-footer-divider">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 gko-footer-bottom">
+      <span>&copy; 2026 Gemilang Katun Outbound. Semua hak dilindungi.</span>
+      <span>Dibuat dengan <i class="bi bi-heart-fill text-danger"></i> untuk tim yang solid.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<a href="https://wa.me/6281234567890?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20paket%20Jungle%20Survival%20Camp" target="_blank" rel="noopener" class="gko-wa-float" aria-label="Chat WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<button type="button" class="gko-back-top" id="backToTop" aria-label="Kembali ke atas">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  // AOS Init
+  AOS.init({
+    duration: 600,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  // Navbar scroll effect
+  document.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.gko-navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  });
+  backBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
