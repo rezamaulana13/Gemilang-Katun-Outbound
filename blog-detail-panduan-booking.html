@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Hal yang Harus Dicek Sebelum Booking Outbound untuk Kantor - Gemilang Katun Outbound</title>
+<meta name="description" content="Checklist praktis sebelum booking outbound untuk kantor: dari jumlah peserta, budget, hingga standar keselamatan.">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP + ICONS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<style>
+/* =========================================================
+   BLOG DETAIL — STYLE BLOG (layout 2 kolom)
+   ========================================================= */
+
+/* ---------- HERO BLOG ---------- */
+.gko-blog-hero {
+  position: relative;
+  padding: 160px 0 50px;
+  background: linear-gradient(135deg, rgba(12,15,9,0.88) 0%, rgba(18,22,14,0.75) 100%),
+              url('https://picsum.photos/seed/blog-panduan-hero/1920/700') center center / cover no-repeat;
+  overflow: hidden;
+}
+.gko-blog-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(217,123,41,0.06) 0%, transparent 60%);
+  z-index: 1;
+}
+.gko-blog-hero .container { position: relative; z-index: 2; }
+
+.gko-blog-hero .gko-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: rgba(243,238,221,0.7);
+  margin-bottom: 1.1rem;
+}
+.gko-blog-hero .gko-breadcrumb a { color: rgba(243,238,221,0.7); text-decoration: none; }
+.gko-blog-hero .gko-breadcrumb a:hover { color: var(--gko-rust); }
+.gko-blog-hero .gko-breadcrumb i { font-size: 0.7rem; margin: 0 0.2rem; }
+.gko-blog-hero .gko-breadcrumb span { color: var(--gko-rust); }
+
+.gko-blog-hero h1 {
+  font-family: var(--gko-font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--gko-text);
+  line-height: 1.2;
+  max-width: 800px;
+}
+.gko-blog-hero h1 span { color: var(--gko-rust); }
+
+.gko-blog-hero .meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.8rem;
+  color: rgba(243,238,221,0.7);
+}
+.gko-blog-hero .meta-info i { color: var(--gko-rust); margin-right: 0.4rem; }
+
+.gko-blog-hero .badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+.gko-blog-hero .badge-item {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(243,238,221,0.12);
+  color: var(--gko-text);
+  font-family: var(--gko-font-tag);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+}
+.gko-blog-hero .badge-item i { color: var(--gko-rust); margin-right: 0.3rem; }
+.gko-blog-hero .badge-item.badge-gold {
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ---------- BLOG CONTENT (2 KOLOM) ---------- */
+.gko-blog-content {
+  padding: 60px 0;
+}
+
+/* Artikel Utama */
+.gko-blog-article {
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--gko-shadow);
+}
+.gko-blog-article .featured-image {
+  border-radius: var(--gko-radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--gko-border);
+}
+.gko-blog-article .featured-image img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+}
+.gko-blog-article .featured-image .caption {
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  color: var(--gko-text-muted);
+  background: var(--gko-bg);
+  text-align: center;
+  font-style: italic;
+  border-top: 1px solid var(--gko-border);
+}
+
+.gko-blog-article .content-body {
+  color: var(--gko-text);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+.gko-blog-article .content-body p {
+  margin-bottom: 1.2rem;
+  color: var(--gko-text-muted);
+}
+.gko-blog-article .content-body h2 {
+  font-family: var(--gko-font-display);
+  font-size: 1.5rem;
+  color: var(--gko-text);
+  margin: 2rem 0 1rem;
+}
+.gko-blog-article .content-body h2 span { color: var(--gko-rust); }
+.gko-blog-article .content-body h3 {
+  font-family: var(--gko-font-display);
+  font-size: 1.2rem;
+  color: var(--gko-text);
+  margin: 1.5rem 0 0.8rem;
+}
+.gko-blog-article .content-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.gko-blog-article .content-body ul li {
+  padding: 0.6rem 0 0.6rem 1.8rem;
+  position: relative;
+  color: var(--gko-text-muted);
+}
+.gko-blog-article .content-body ul li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--gko-rust);
+  font-weight: 700;
+}
+.gko-blog-article .content-body .highlight-box {
+  background: var(--gko-bg-alt);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-md);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--gko-rust);
+}
+.gko-blog-article .content-body .highlight-box p {
+  margin: 0;
+  color: var(--gko-text);
+}
+.gko-blog-article .content-body .highlight-box i {
+  color: var(--gko-rust);
+  margin-right: 0.5rem;
+}
+.gko-blog-article .content-body .blog-image {
+  border-radius: var(--gko-radius-md);
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid var(--gko-border);
+}
+.gko-blog-article .content-body .blog-image img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+}
+.gko-blog-article .content-body .blog-image .caption {
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  color: var(--gko-text-muted);
+  background: var(--gko-bg);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ===== BACA JUGA (di dalam konten) ===== */
+.gko-baca-juga {
+  background: var(--gko-bg-alt);
+  border-radius: var(--gko-radius-md);
+  padding: 1.2rem 1.5rem;
+  margin: 1.8rem 0;
+  border-left: 4px solid var(--gko-rust);
+}
+.gko-baca-juga .title {
+  font-weight: 700;
+  color: var(--gko-text);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.gko-baca-juga .title i { color: var(--gko-rust); margin-right: 0.5rem; }
+.gko-baca-juga ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gko-baca-juga ul li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--gko-border);
+}
+.gko-baca-juga ul li:last-child { border-bottom: none; }
+.gko-baca-juga ul li a {
+  color: var(--gko-rust);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+.gko-baca-juga ul li a:hover {
+  color: var(--gko-text);
+  padding-left: 0.3rem;
+}
+.gko-baca-juga ul li a i { margin-right: 0.4rem; }
+
+/* ---------- AUTHOR BOX ---------- */
+.gko-author-box {
+  background: var(--gko-bg-alt);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-md);
+  padding: 1.8rem 2rem;
+  margin: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.gko-author-box .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gko-rust);
+  flex-shrink: 0;
+}
+.gko-author-box .info h4 {
+  font-family: var(--gko-font-display);
+  font-size: 1.1rem;
+  color: var(--gko-text);
+  margin: 0;
+}
+.gko-author-box .info .role {
+  font-size: 0.8rem;
+  color: var(--gko-rust);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.gko-author-box .info p {
+  color: var(--gko-text-muted);
+  font-size: 0.9rem;
+  margin: 0.4rem 0 0;
+  line-height: 1.6;
+}
+@media (max-width: 576px) {
+  .gko-author-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+}
+
+/* ---------- TAGS ---------- */
+.gko-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.gko-tag {
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  color: var(--gko-text-muted);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.gko-tag:hover {
+  background: var(--gko-rust);
+  color: #fff;
+  border-color: var(--gko-rust);
+}
+
+/* ---------- SHARE BUTTONS ---------- */
+.gko-share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.gko-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: none;
+  color: #fff;
+}
+.gko-share-btn:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+.gko-share-btn i { font-size: 1rem; }
+.gko-share-btn.whatsapp { background: #25D366; }
+.gko-share-btn.whatsapp:hover { background: #1DA851; }
+.gko-share-btn.facebook { background: #1877F2; }
+.gko-share-btn.facebook:hover { background: #0D65D9; }
+.gko-share-btn.twitter { background: #000; }
+.gko-share-btn.twitter:hover { background: #1A1A1A; }
+.gko-share-btn.linkedin { background: #0A66C2; }
+.gko-share-btn.linkedin:hover { background: #08549F; }
+.gko-share-btn.copy { background: var(--gko-surface-2); color: var(--gko-text); border: 1px solid var(--gko-border); }
+.gko-share-btn.copy:hover { background: var(--gko-rust); color: #fff; border-color: var(--gko-rust); }
+
+/* ---------- SIDEBAR (RIGHT COLUMN) ---------- */
+.gko-sidebar-widget {
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 1.8rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.gko-sidebar-widget .widget-title {
+  font-family: var(--gko-font-display);
+  font-size: 1.05rem;
+  color: var(--gko-text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--gko-border);
+}
+.gko-sidebar-widget .widget-title i { color: var(--gko-rust); margin-right: 0.5rem; }
+
+/* Promo Widget */
+.gko-promo-widget {
+  background: linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark));
+  border-radius: var(--gko-radius-lg);
+  padding: 1.8rem 1.5rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.gko-promo-widget .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.gko-promo-widget h4 {
+  font-family: var(--gko-font-display);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.gko-promo-widget p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 1.2rem;
+}
+.gko-promo-widget .btn-promo {
+  background: #fff;
+  color: var(--gko-rust-dark);
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+.gko-promo-widget .btn-promo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Contact Widget */
+.gko-contact-widget .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--gko-border);
+}
+.gko-contact-widget .contact-item:last-child { border-bottom: none; }
+.gko-contact-widget .contact-item i {
+  color: var(--gko-rust);
+  font-size: 1.1rem;
+  min-width: 24px;
+}
+.gko-contact-widget .contact-item .label {
+  font-size: 0.75rem;
+  color: var(--gko-text-muted);
+}
+.gko-contact-widget .contact-item .value {
+  font-size: 0.85rem;
+  color: var(--gko-text);
+  font-weight: 600;
+}
+.gko-contact-widget .contact-item .value a {
+  color: var(--gko-rust);
+  text-decoration: none;
+}
+.gko-contact-widget .contact-item .value a:hover { text-decoration: underline; }
+
+/* Related Posts Widget */
+.gko-related-widget .related-item {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--gko-border);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+.gko-related-widget .related-item:last-child { border-bottom: none; }
+.gko-related-widget .related-item:hover { padding-left: 0.5rem; }
+.gko-related-widget .related-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--gko-radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--gko-border);
+}
+.gko-related-widget .related-item .info h5 {
+  font-size: 0.85rem;
+  color: var(--gko-text);
+  margin: 0 0 0.2rem;
+  line-height: 1.3;
+}
+.gko-related-widget .related-item .info .date {
+  font-size: 0.7rem;
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- REKOMENDASI BAWAH (3 CARD) ---------- */
+.gko-bottom-recommend {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--gko-border);
+}
+.gko-bottom-recommend .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.gko-bottom-recommend .section-header h2 {
+  font-family: var(--gko-font-display);
+  font-size: 1.3rem;
+  color: var(--gko-text);
+}
+.gko-bottom-recommend .section-header h2 span { color: var(--gko-rust); }
+.gko-bottom-recommend .section-header a {
+  color: var(--gko-rust);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.gko-bottom-recommend .section-header a:hover { text-decoration: underline; }
+
+.gko-bottom-card {
+  background: var(--gko-surface);
+  border: 1px solid var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.gko-bottom-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--gko-shadow);
+  border-color: var(--gko-rust);
+}
+.gko-bottom-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.gko-bottom-card .body {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+.gko-bottom-card .body .tag {
+  display: inline-block;
+  background: rgba(217,123,41,0.15);
+  color: var(--gko-rust);
+  font-size: 0.65rem;
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.gko-bottom-card .body h4 {
+  font-family: var(--gko-font-display);
+  font-size: 1rem;
+  color: var(--gko-text);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+.gko-bottom-card .body p {
+  font-size: 0.85rem;
+  color: var(--gko-text-muted);
+  margin-bottom: 0.5rem;
+}
+.gko-bottom-card .body .date {
+  font-size: 0.7rem;
+  color: var(--gko-text-muted);
+  font-family: var(--gko-font-tag);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- CTA BANNER ---------- */
+.gko-cta-banner {
+  background: var(--gko-surface);
+  border: 1.5px dashed var(--gko-border);
+  border-radius: var(--gko-radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+.gko-cta-banner h2 {
+  font-family: var(--gko-font-display);
+  font-size: 1.8rem;
+  color: var(--gko-text);
+}
+.gko-cta-banner h2 span { color: var(--gko-rust); }
+.gko-cta-banner p {
+  color: var(--gko-text-muted);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0.5rem auto 1.5rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991.98px) {
+  .gko-blog-hero { padding: 140px 0 40px; }
+  .gko-blog-content { padding: 40px 0; }
+  .gko-blog-article { padding: 1.5rem; }
+  .gko-blog-article .content-body { font-size: 0.95rem; }
+}
+@media (max-width: 767.98px) {
+  .gko-blog-hero { padding: 120px 0 30px; }
+  .gko-blog-hero h1 { font-size: 1.6rem; }
+  .gko-blog-article .content-body h2 { font-size: 1.2rem; }
+  .gko-blog-article .content-body h3 { font-size: 1rem; }
+  .gko-author-box { padding: 1.2rem; flex-direction: column; text-align: center; }
+  .gko-sidebar-widget { padding: 1.2rem; }
+  .gko-cta-banner { padding: 2rem 1.2rem; }
+  .gko-cta-banner h2 { font-size: 1.3rem; }
+}
+@media (max-width: 575.98px) {
+  .gko-blog-hero h1 { font-size: 1.3rem; }
+  .gko-blog-hero .meta-info { font-size: 0.65rem; gap: 0.6rem; }
+  .gko-blog-article { padding: 1rem; }
+  .gko-blog-article .content-body { font-size: 0.9rem; }
+  .gko-share-btn { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
+  .gko-baca-juga { padding: 1rem; }
+  .gko-baca-juga ul li a { font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top gko-navbar" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand gko-brand" href="index.html">
+      <span class="gko-brand-icon"><i class="bi bi-compass-fill"></i></span>
+      <span class="gko-brand-text">Gemilang Katun <em>Outbound</em></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="paket-outbound.html">Paket</a></li>
+        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a href="https://wa.me/6281234567890" class="btn gko-btn-primary btn-sm px-3">Booking</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO BLOG ================= -->
+<header class="gko-blog-hero">
+  <div class="container">
+    <nav class="gko-breadcrumb">
+      <a href="index.html">Beranda</a>
+      <i class="bi bi-chevron-right"></i>
+      <a href="blog.html">Blog</a>
+      <i class="bi bi-chevron-right"></i>
+      <span>5 Hal yang Harus Dicek Sebelum Booking Outbound untuk Kantor</span>
+    </nav>
+    <h1>5 Hal yang Harus Dicek Sebelum <span>Booking Outbound</span> untuk Kantor</h1>
+    <div class="meta-info">
+      <span><i class="bi bi-calendar3"></i> 20 Juli 2026</span>
+      <span><i class="bi bi-person-fill"></i> Tim Gemilang Katun</span>
+      <span><i class="bi bi-clock"></i> 5 menit membaca</span>
+    </div>
+    <div class="badge-wrap">
+      <span class="badge-item"><i class="bi bi-tag"></i> Panduan</span>
+      <span class="badge-item badge-gold"><i class="bi bi-star-fill"></i> Paling Banyak Dibaca</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= BLOG CONTENT (2 KOLOM) ================= -->
+<section class="gko-blog-content">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- ===== LEFT COLUMN: ARTIKEL UTAMA ===== -->
+      <div class="col-lg-8">
+        <article class="gko-blog-article" data-aos="fade-up">
+
+          <!-- Featured Image -->
+          <div class="featured-image">
+            <img src="https://picsum.photos/seed/blog-panduan-featured/1200/600" alt="Panduan Booking Outbound untuk Kantor">
+            <div class="caption">Tim Gemilang Katun sedang merancang program outbound untuk klien korporat.</div>
+          </div>
+
+          <!-- Konten -->
+          <div class="content-body">
+
+            <p>
+              <strong>Menyelenggarakan outbound untuk kantor</strong> adalah investasi besar — bukan cuma soal budget, 
+              tapi juga waktu dan energi tim. Sayangnya, masih banyak perusahaan yang kurang teliti dalam memilih 
+              penyedia outbound, sehingga acara yang seharusnya seru malah berakhir mengecewakan.
+            </p>
+            <p>
+              Dari pengalaman kami mendampingi ratusan perusahaan di <strong>Gemilang Katun Outbound</strong>, ada 
+              <strong>5 hal krusial</strong> yang wajib kamu cek sebelum booking. Yuk, kita bahas satu per satu!
+            </p>
+
+            <h2>1. <span>Kredibilitas &amp; Pengalaman</span> Penyedia</h2>
+            <p>
+              Jangan terjebak dengan harga murah! Cek dulu:
+            </p>
+            <ul>
+              <li><strong>Berapa lama</strong> mereka sudah bergerak di bidang outbound?</li>
+              <li><strong>Portofolio klien</strong> — apakah pernah menangani perusahaan sekelas kamu?</li>
+              <li><strong>Sertifikasi instruktur</strong> — apakah mereka punya lisensi resmi?</li>
+              <li><strong>Testimoni</strong> dari klien sebelumnya (bisa minta referensi langsung).</li>
+            </ul>
+            <div class="highlight-box">
+              <p><i class="bi bi-lightbulb"></i> <strong>Tips:</strong> Jangan ragu minta <strong>video dokumentasi</strong> acara sebelumnya 
+              untuk melihat langsung kualitas pelayanan dan antusiasme peserta.</p>
+            </div>
+
+            <!-- ===== BACA JUGA 1 ===== -->
+            <div class="gko-baca-juga">
+              <p class="title"><i class="bi bi-bookmark-plus"></i> Baca Juga Artikel Terkait:</p>
+              <ul>
+                <li>
+                  <a href="blog-detail-tips-games.html">
+                    <i class="bi bi-arrow-right-circle"></i> 7 Games Kekompakan Ringan untuk Tim Baru Kenal
+                  </a>
+                </li>
+                <li>
+                  <a href="blog-detail-standar-safety.html">
+                    <i class="bi bi-arrow-right-circle"></i> Standar Keselamatan yang Wajib Ada di Program Rope Course
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <h2>2. <span>Standar Keselamatan</span> &amp; Perlengkapan</h2>
+            <p>
+              Keselamatan adalah <strong>nomor satu</strong>, terutama untuk aktivitas petualangan seperti rope course 
+              atau flying fox. Pastikan:
+            </p>
+            <ul>
+              <li>Peralatan <strong>sertifikasi</strong> (harness, helm, carabiner) — jangan asal pakai!</li>
+              <li>Ada <strong>tim medis</strong> siaga selama acara berlangsung.</li>
+              <li>Instruktur melakukan <strong>briefing keselamatan</strong> sebelum setiap aktivitas.</li>
+              <li>Ada <strong>prosedur darurat</strong> yang jelas jika terjadi insiden.</li>
+            </ul>
+            <div class="blog-image">
+              <img src="https://picsum.photos/seed/blog-safety/1000/500" alt="Instruktur mengecek peralatan keselamatan">
+              <div class="caption">Instruktur Gemilang Katun selalu mengecek peralatan safety sebelum aktivitas dimulai.</div>
+            </div>
+
+            <h2>3. <span>Fasilitator</span> yang Profesional</h2>
+            <p>
+              Fasilitator adalah <strong>kunci keberhasilan</strong> acara outbound. Mereka yang menentukan suasana 
+              tetap hidup, peserta terlibat, dan pesan-pesan tim tersampaikan. Perhatikan:
+            </p>
+            <ul>
+              <li>Rasio <strong>fasilitator vs peserta</strong> — idealnya 1:10 untuk aktivitas berat.</li>
+              <li>Kemampuan <strong>membaca situasi</strong> dan menyesuaikan games dengan mood peserta.</li>
+              <li>Pengalaman <strong>menangani berbagai tipe kepribadian</strong> dalam satu tim.</li>
+            </ul>
+
+            <!-- ===== BACA JUGA 2 ===== -->
+            <div class="gko-baca-juga">
+              <p class="title"><i class="bi bi-bookmark-plus"></i> Rekomendasi Artikel Lainnya:</p>
+              <ul>
+                <li>
+                  <a href="blog-detail-kisah-pt-nusantara.html">
+                    <i class="bi bi-arrow-right-circle"></i> Cerita PT Nusantara Digital: Dari Kaku Jadi Kompak
+                  </a>
+                </li>
+                <li>
+                  <a href="blog-detail-tips-sekolah.html">
+                    <i class="bi bi-arrow-right-circle"></i> Tips Memilih Paket Outbound untuk Acara Sekolah
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <h2>4. <span>Fleksibilitas</span> Paket &amp; Kustomisasi</h2>
+            <p>
+              Setiap perusahaan punya <strong>kebutuhan yang berbeda</strong>. Penyedia outbound yang baik harus bisa:
+            </p>
+            <ul>
+              <li>Menyesuaikan <strong>durasi dan level tantangan</strong> dengan kondisi tim.</li>
+              <li>Memberikan opsi <strong>kombinasi paket</strong> (games ringan + petualangan).</li>
+              <li>Menyediakan <strong>alternatif aktivitas</strong> jika cuaca buruk atau ada peserta yang tidak bisa ikut.</li>
+            </ul>
+            <div class="highlight-box">
+              <p><i class="bi bi-chat-dots"></i> <strong>Ingat:</strong> Jangan ragu untuk <strong>negosiasi</strong>! Penyedia yang profesional akan dengan senang hati menyesuaikan 
+              dengan kebutuhan dan budget kamu.</p>
+            </div>
+
+            <h2>5. <span>Biaya Transparan</span> &amp; Tidak Ada Biaya Tersembunyi</h2>
+            <p>
+              Ini yang paling sering bikin kesal! Pastikan <strong>rincian biaya</strong> jelas dari awal:
+            </p>
+            <ul>
+              <li>Apa saja yang <strong>termasuk</strong> dalam paket (konsumsi, peralatan, sertifikat, dll).</li>
+              <li>Apa yang <strong>tidak termasuk</strong> (transportasi, asuransi, sewa lokasi).</li>
+              <li>Kebijakan <strong>DP dan pembatalan</strong> — berapa yang bisa dikembalikan?</li>
+              <li>Apakah ada <strong>biaya tambahan</strong> untuk peserta di luar kuota?</li>
+            </ul>
+            <p>
+              Penyedia outbound yang <strong>jujur dan transparan</strong> akan memberikan rincian lengkap di 
+              <strong>proposal penawaran</strong> sebelum tanda tangan kontrak.
+            </p>
+
+            <!-- ===== BACA JUGA 3 ===== -->
+            <div class="gko-baca-juga">
+              <p class="title"><i class="bi bi-bookmark-plus"></i> Artikel Populer Lainnya:</p>
+              <ul>
+                <li>
+                  <a href="blog-detail-berita-lokasi.html">
+                    <i class="bi bi-arrow-right-circle"></i> Gemilang Katun Tambah 10 Lokasi Mitra Baru
+                  </a>
+                </li>
+                <li>
+                  <a href="blog-detail-standar-safety.html">
+                    <i class="bi bi-arrow-right-circle"></i> Standar Keselamatan yang Wajib Ada di Program Rope Course
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box" style="border-left-color: var(--gko-rust);">
+              <h3 style="font-family: var(--gko-font-display); color: var(--gko-rust); margin-top: 0; font-size: 1.1rem;">
+                <i class="bi bi-check-circle-fill"></i> Checklist Akhir
+              </h3>
+              <p style="color: var(--gko-text-muted);">
+                Sebelum booking, tanyakan 5 hal ini ke penyedia outbound:
+              </p>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 0.4rem 0; color: var(--gko-text); border-bottom: 1px solid var(--gko-border);">
+                  ✅ "Berapa pengalaman instruktur dan sertifikasi apa yang dimiliki?"
+                </li>
+                <li style="padding: 0.4rem 0; color: var(--gko-text); border-bottom: 1px solid var(--gko-border);">
+                  ✅ "Apa standar keselamatan dan perlengkapan yang digunakan?"
+                </li>
+                <li style="padding: 0.4rem 0; color: var(--gko-text); border-bottom: 1px solid var(--gko-border);">
+                  ✅ "Bisakah saya lihat portofolio dan testimoni klien sebelumnya?"
+                </li>
+                <li style="padding: 0.4rem 0; color: var(--gko-text); border-bottom: 1px solid var(--gko-border);">
+                  ✅ "Apakah paket bisa disesuaikan dengan kebutuhan dan budget kami?"
+                </li>
+                <li style="padding: 0.4rem 0; color: var(--gko-text);">
+                  ✅ "Apa rincian biaya secara transparan — termasuk dan tidak termasuk?"
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              <strong>Nah, sekarang kamu sudah siap!</strong> Dengan 5 checklist di atas, kamu bisa memilih 
+              penyedia outbound yang tepat dan memastikan acara kantor berjalan <strong>seru, aman, dan berkesan</strong> 
+              bagi seluruh tim.
+            </p>
+            <p>
+              Butuh rekomendasi paket outbound untuk kantor? <strong>Tim Gemilang Katun Outbound</strong> siap membantu 
+              merancang program yang sesuai dengan kebutuhan timmu. <a href="kontak.html" style="color: var(--gko-rust); font-weight: 600;">Hubungi kami sekarang</a> 
+              untuk konsultasi gratis!
+            </p>
+
+          </div>
+
+          <!-- Tags -->
+          <div class="gko-tags">
+            <span style="font-weight: 600; color: var(--gko-text); margin-right: 0.5rem;">Tags:</span>
+            <a href="#" class="gko-tag">Panduan Outbound</a>
+            <a href="#" class="gko-tag">Corporate Gathering</a>
+            <a href="#" class="gko-tag">Tips Kantor</a>
+            <a href="#" class="gko-tag">Keselamatan</a>
+          </div>
+
+          <!-- Share Buttons -->
+          <div>
+            <p style="font-weight: 600; color: var(--gko-text); margin-bottom: 0.5rem;">Bagikan artikel ini:</p>
+            <div class="gko-share-buttons">
+              <a href="https://wa.me/?text=5%20Hal%20yang%20Harus%20Dicek%20Sebelum%20Booking%20Outbound%20untuk%20Kantor%20-%20Gemilang%20Katun%20Outbound" target="_blank" class="gko-share-btn whatsapp">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://gemilangkatun.id/blog-detail-panduan-booking.html" target="_blank" class="gko-share-btn facebook">
+                <i class="bi bi-facebook"></i> Facebook
+              </a>
+              <a href="https://twitter.com/intent/tweet?text=5%20Hal%20yang%20Harus%20Dicek%20Sebelum%20Booking%20Outbound%20untuk%20Kantor&url=https://gemilangkatun.id/blog-detail-panduan-booking.html" target="_blank" class="gko-share-btn twitter">
+                <i class="bi bi-twitter-x"></i> Twitter
+              </a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://gemilangkatun.id/blog-detail-panduan-booking.html" target="_blank" class="gko-share-btn linkedin">
+                <i class="bi bi-linkedin"></i> LinkedIn
+              </a>
+              <button class="gko-share-btn copy" onclick="copyLink()">
+                <i class="bi bi-link-45deg"></i> Salin Link
+              </button>
+            </div>
+          </div>
+
+          <!-- Author Box -->
+          <div class="gko-author-box">
+            <img src="https://picsum.photos/seed/team-avatar/160/160" alt="Tim Gemilang Katun Outbound" class="avatar">
+            <div class="info">
+              <h4>Tim Gemilang Katun Outbound</h4>
+              <div class="role">Content Team</div>
+              <p>
+                Tim kreatif Gemilang Katun Outbound yang terdiri dari fasilitator, instruktur, dan content writer 
+                berpengalaman. Kami membagikan tips dan cerita dari lapangan untuk membantu Anda merancang 
+                program outbound yang berkesan.
+              </p>
+            </div>
+          </div>
+
+        </article>
+      </div>
+
+      <!-- ===== RIGHT COLUMN: SIDEBAR ===== -->
+      <aside class="col-lg-4">
+
+        <!-- Promo Widget -->
+        <div class="gko-promo-widget" data-aos="fade-up" data-aos-delay="100">
+          <div class="badge"><i class="bi bi-fire"></i> Promo Spesial</div>
+          <h4>Butuh Proposal Outbound?</h4>
+          <p>Dapatkan diskon s.d 15% untuk pemesanan rombongan lebih dari 50 pax.</p>
+          <a href="paket-outbound.html" class="btn-promo">Lihat Katalog Paket</a>
+        </div>
+
+        <!-- Contact Widget -->
+        <div class="gko-sidebar-widget gko-contact-widget" data-aos="fade-up" data-aos-delay="150">
+          <h4 class="widget-title"><i class="bi bi-headset"></i> Hubungi Admin</h4>
+          <div class="contact-item">
+            <i class="bi bi-whatsapp"></i>
+            <div>
+              <div class="label">WhatsApp</div>
+              <div class="value"><a href="https://wa.me/6281234567890" target="_blank">+62 812-3456-7890</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-geo-alt"></i>
+            <div>
+              <div class="label">Lokasi</div>
+              <div class="value">Jl. Rindang Alam No. 21, Bogor</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-envelope"></i>
+            <div>
+              <div class="label">Email</div>
+              <div class="value">halo@gemilangkatun.id</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Posts Widget -->
+        <div class="gko-sidebar-widget gko-related-widget" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="widget-title"><i class="bi bi-journal-text"></i> Artikel Terkait</h4>
+
+          <a href="blog-detail-tips-games.html" class="related-item">
+            <img src="https://picsum.photos/seed/blog-related-1/140/140" alt="7 Games Kekompakan">
+            <div class="info">
+              <h5>7 Games Kekompakan Ringan untuk Tim Baru Kenal</h5>
+              <div class="date">14 Juli 2026</div>
+            </div>
+          </a>
+
+          <a href="blog-detail-kisah-pt-nusantara.html" class="related-item">
+            <img src="https://picsum.photos/seed/blog-related-2/140/140" alt="Cerita PT Nusantara">
+            <div class="info">
+              <h5>Cerita PT Nusantara Digital: Dari Kaku Jadi Kompak</h5>
+              <div class="date">8 Juli 2026</div>
+            </div>
+          </a>
+
+          <a href="blog-detail-standar-safety.html" class="related-item">
+            <img src="https://picsum.photos/seed/blog-related-3/140/140" alt="Standar Keselamatan">
+            <div class="info">
+              <h5>Standar Keselamatan yang Wajib Ada di Program Rope Course</h5>
+              <div class="date">2 Juli 2026</div>
+            </div>
+          </a>
+
+          <a href="blog-detail-tips-sekolah.html" class="related-item">
+            <img src="https://picsum.photos/seed/blog-related-4/140/140" alt="Tips Outbound Sekolah">
+            <div class="info">
+              <h5>Tips Memilih Paket Outbound untuk Acara Sekolah</h5>
+              <div class="date">25 Juni 2026</div>
+            </div>
+          </a>
+
+          <a href="blog-detail-berita-lokasi.html" class="related-item">
+            <img src="https://picsum.photos/seed/blog-related-5/140/140" alt="10 Lokasi Mitra Baru">
+            <div class="info">
+              <h5>Gemilang Katun Tambah 10 Lokasi Mitra Baru</h5>
+              <div class="date">15 Juni 2026</div>
+            </div>
+          </a>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- ===== BOTTOM: REKOMENDASI 3 CARD ===== -->
+    <div class="gko-bottom-recommend" data-aos="fade-up">
+      <div class="section-header">
+        <h2><span>Artikel</span> Rekomendasi Lainnya</h2>
+        <a href="blog.html">Lihat Semua <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="blog-detail-tips-games.html" class="gko-bottom-card">
+            <img src="https://picsum.photos/seed/blog-bottom-1/600/400" alt="Games Kekompakan">
+            <div class="body">
+              <span class="tag">Tips Outbound</span>
+              <h4>7 Games Kekompakan Ringan untuk Tim Baru Kenal</h4>
+              <p>Cocok untuk sesi pemanasan sebelum masuk ke tantangan yang lebih berat.</p>
+              <div class="date">14 Juli 2026</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-detail-kisah-pt-nusantara.html" class="gko-bottom-card">
+            <img src="https://picsum.photos/seed/blog-bottom-2/600/400" alt="Kisah PT Nusantara">
+            <div class="body">
+              <span class="tag">Kisah Klien</span>
+              <h4>Cerita PT Nusantara Digital: Dari Kaku Jadi Kompak</h4>
+              <p>Bagaimana satu tim yang jarang ngobrol akhirnya saling terbuka lewat rope course.</p>
+              <div class="date">8 Juli 2026</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="blog-detail-standar-safety.html" class="gko-bottom-card">
+            <img src="https://picsum.photos/seed/blog-bottom-3/600/400" alt="Standar Keselamatan">
+            <div class="body">
+              <span class="tag">Panduan</span>
+              <h4>Standar Keselamatan yang Wajib Ada di Program Rope Course</h4>
+              <p>Panduan singkat untuk mengecek keamanan penyedia outbound.</p>
+              <div class="date">2 Juli 2026</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CTA BANNER ===== -->
+    <div class="gko-cta-banner" data-aos="zoom-in">
+      <h2>Konsultasikan Kebutuhan <span>Outbound</span> Anda Sekarang!</h2>
+      <p>Tim CS kami siap membantu merancang susunan acara dan estimasi anggaran sesuai budget Anda.</p>
+      <a href="https://wa.me/6281234567890?text=Halo%20Gemilang%20Katun%2C%20saya%20ingin%20konsultasi%20paket%20outbound" target="_blank" class="btn gko-btn-primary btn-lg px-5">
+        <i class="bi bi-whatsapp"></i> Konsultasi Bebas Biaya
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="gko-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="gko-brand gko-brand-footer" href="index.html">
+          <span class="gko-brand-icon"><i class="bi bi-compass-fill"></i></span>
+          <span class="gko-brand-text">Gemilang Katun <em>Outbound</em></span>
+        </a>
+        <p class="gko-text-muted mt-3" style="font-size: 0.92rem;">
+          Merancang program outbound, team building, dan corporate gathering yang aman, seru,
+          dan berdampak nyata bagi kekompakan tim Anda.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="gko-social"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-tiktok"></i></a>
+          <a href="#" class="gko-social"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h4 class="gko-footer-title">Navigasi</h4>
+        <ul class="gko-footer-list">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="about.html">Tentang</a></li>
+          <li><a href="paket-outbound.html">Paket</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h4 class="gko-footer-title">Paket Favorit</h4>
+        <ul class="gko-footer-list">
+          <li><a href="detail-fun-games-kekompakan.html">Fun Games</a></li>
+          <li><a href="detail-rope-course.html">Rope Course</a></li>
+          <li><a href="detail-corporate-gathering.html">Corporate 2D1N</a></li>
+          <li><a href="detail-family-fun-day.html">Family Fun Day</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4">
+        <h4 class="gko-footer-title">Hubungi Kami</h4>
+        <ul class="gko-footer-list gko-footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> Jl. Rindang Alam No. 21, Bogor, Jawa Barat</li>
+          <li><i class="bi bi-whatsapp"></i> +62 812-3456-7890</li>
+          <li><i class="bi bi-envelope-fill"></i> halo@gemilangkatun.id</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="gko-footer-divider">
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 gko-footer-bottom">
+      <span>&copy; 2026 Gemilang Katun Outbound. Semua hak dilindungi.</span>
+      <span>Dibuat dengan <i class="bi bi-heart-fill text-danger"></i> untuk tim yang solid.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<a href="https://wa.me/6281234567890?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20artikel%20Panduan%20Booking%20Outbound" target="_blank" rel="noopener" class="gko-wa-float" aria-label="Chat WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<button type="button" class="gko-back-top" id="backToTop" aria-label="Kembali ke atas">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  // AOS Init
+  AOS.init({
+    duration: 600,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  // Navbar scroll effect
+  document.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.gko-navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Back to top
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  });
+  backBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Copy link function
+  function copyLink() {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(function() {
+      alert('Link berhasil disalin!');
+    }, function() {
+      alert('Gagal menyalin link. Silakan copy manual.');
+    });
+  }
+</script>
+</body>
+</html>
