@@ -17,6 +17,241 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <style>
+    /* =========================================================
+       DETAIL PAKET — STYLE TAMBAHAN
+       ========================================================= */
+
+    /* ---------- DETAIL MEDIA ---------- */
+    .gko-detail-media {
+      border-radius: var(--gko-radius-lg);
+      overflow: hidden;
+      border: 2px solid var(--gko-border);
+    }
+
+    .gko-detail-quick-info {
+      background: var(--gko-surface);
+      border: 1px solid var(--gko-border);
+      border-radius: var(--gko-radius-lg);
+    }
+
+    /* ---------- TIMELINE (untuk rundown) ---------- */
+    .gko-timeline {
+      position: relative;
+      padding-left: 2.4rem;
+    }
+
+    .gko-timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      background-image: linear-gradient(var(--gko-rope), var(--gko-rope));
+      background-size: 3px 14px;
+      background-repeat: repeat-y;
+      opacity: .55;
+    }
+
+    .gko-timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .gko-timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .gko-timeline-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gko-rust);
+      border: 3px solid var(--gko-bg);
+      box-shadow: 0 0 0 2px rgba(217, 123, 41, .4);
+    }
+
+    .gko-timeline-year {
+      font-family: var(--gko-font-tag);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gko-rust);
+      font-size: .85rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    .gko-timeline-item h3 {
+      font-size: 1.15rem;
+      color: var(--gko-text);
+      margin-bottom: .4rem;
+    }
+
+    .gko-timeline-item p {
+      color: var(--gko-text-muted);
+      font-size: .92rem;
+      margin-bottom: 0;
+      max-width: 520px;
+    }
+
+    /* ---------- LIST CHECK ---------- */
+    .gko-list-check {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .gko-list-check li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.92rem;
+      color: var(--gko-text-muted);
+      border-bottom: 1px solid var(--gko-border);
+    }
+
+    .gko-list-check li:last-child {
+      border-bottom: none;
+    }
+
+    .gko-list-check li i {
+      font-size: 1.1rem;
+    }
+
+    .gko-list-check li .bi-check-circle-fill {
+      color: var(--gko-moss);
+    }
+
+    .gko-list-check li .bi-x-circle-fill {
+      color: #dc3545;
+    }
+
+    /* ---------- INFO BOX ---------- */
+    .gko-info-box {
+      background: var(--gko-surface);
+      border: 1.5px dashed var(--gko-border);
+      border-radius: var(--gko-radius-md);
+      padding: 1.2rem 1.4rem;
+      border-left: 4px solid var(--gko-rust);
+    }
+
+    .gko-info-box p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--gko-text-muted);
+    }
+
+    .gko-info-box p strong {
+      color: var(--gko-text);
+    }
+
+    /* ---------- REKOMENDASI CARD ---------- */
+    .gko-recom-card {
+      background: var(--gko-surface);
+      border: 1px solid var(--gko-border);
+      border-radius: var(--gko-radius-lg);
+      overflow: hidden;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
+    .gko-recom-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--gko-shadow);
+      border-color: var(--gko-rust);
+    }
+
+    .gko-recom-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .gko-recom-card .body {
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+
+    .gko-recom-card .body h4 {
+      font-family: var(--gko-font-display);
+      font-size: 1.05rem;
+      color: var(--gko-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .gko-recom-card .body p {
+      font-size: 0.85rem;
+      color: var(--gko-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .gko-recom-card .body .price-tag {
+      font-weight: 700;
+      color: var(--gko-rust);
+      font-size: 0.95rem;
+    }
+
+    .gko-recom-card .body .price-tag small {
+      font-weight: 400;
+      color: var(--gko-text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 767.98px) {
+      .gko-timeline {
+        padding-left: 1.6rem;
+      }
+
+      .gko-timeline-dot {
+        left: -1.6rem;
+        width: 18px;
+        height: 18px;
+      }
+
+      .gko-timeline-item h3 {
+        font-size: 1rem;
+      }
+
+      .gko-timeline-item p {
+        font-size: 0.85rem;
+      }
+
+      .gko-recom-card img {
+        height: 140px;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .gko-detail-quick-info .col-4 {
+        padding: 0 0.3rem;
+      }
+
+      .gko-detail-quick-info .col-4 i {
+        font-size: 1.4rem !important;
+      }
+
+      .gko-detail-quick-info .col-4 strong {
+        font-size: 0.9rem;
+      }
+
+      .gko-detail-quick-info .col-4 span {
+        font-size: 0.7rem !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -92,19 +327,22 @@
               class="rounded-4 w-100" style="aspect-ratio:4/3; object-fit:cover; border:2px solid var(--gko-border);">
           </div>
 
-          <div class="gko-detail-quick-info mt-4 p-4 rounded-4" style="background:var(--gko-surface); border:1px solid var(--gko-border);">
+          <div class="gko-detail-quick-info mt-4 p-4 rounded-4">
             <div class="row g-3 text-center">
               <div class="col-4">
                 <i class="bi bi-people-fill" style="color:var(--gko-rust); font-size:1.8rem;"></i>
-                <p class="mb-0 mt-1"><strong>Min. 20</strong><br><span class="gko-text-muted" style="font-size:0.8rem;">Peserta</span></p>
+                <p class="mb-0 mt-1"><strong>Min. 20</strong><br><span class="gko-text-muted"
+                    style="font-size:0.8rem;">Peserta</span></p>
               </div>
               <div class="col-4">
                 <i class="bi bi-clock-fill" style="color:var(--gko-rust); font-size:1.8rem;"></i>
-                <p class="mb-0 mt-1"><strong>4-6 Jam</strong><br><span class="gko-text-muted" style="font-size:0.8rem;">Durasi</span></p>
+                <p class="mb-0 mt-1"><strong>4-6 Jam</strong><br><span class="gko-text-muted"
+                    style="font-size:0.8rem;">Durasi</span></p>
               </div>
               <div class="col-4">
                 <i class="bi bi-star-fill" style="color:var(--gko-rust); font-size:1.8rem;"></i>
-                <p class="mb-0 mt-1"><strong>Ramah</strong><br><span class="gko-text-muted" style="font-size:0.8rem;">Lintas Usia</span></p>
+                <p class="mb-0 mt-1"><strong>Ramah</strong><br><span class="gko-text-muted"
+                    style="font-size:0.8rem;">Lintas Usia</span></p>
               </div>
             </div>
           </div>
@@ -115,7 +353,8 @@
           <span class="gko-eyebrow gko-eyebrow-dark"><i class="bi bi-backpack4-fill"></i> Paket Komunitas</span>
           <h2 class="gko-section-title" style="font-size:2rem;">Outbound &amp; Gathering Komunitas</h2>
 
-          <div class="gko-pack-price" style="display:inline-flex; align-items:baseline; gap:.35rem; font-family:var(--gko-font-display); color:#fff; background:linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark)); font-size:.9rem; font-weight:600; padding:.4rem .9rem; border-radius:var(--gko-radius-sm) var(--gko-radius-sm) var(--gko-radius-sm) 2px; width:fit-content; margin-bottom:1.25rem;">
+          <div class="gko-pack-price"
+            style="display:inline-flex; align-items:baseline; gap:.35rem; font-family:var(--gko-font-display); color:#fff; background:linear-gradient(135deg, var(--gko-rust), var(--gko-rust-dark)); font-size:.9rem; font-weight:600; padding:.4rem .9rem; border-radius:var(--gko-radius-sm) var(--gko-radius-sm) var(--gko-radius-sm) 2px; width:fit-content; margin-bottom:1.25rem;">
             <span style="font-size:1.35rem;">Rp195.000</span> / peserta
           </div>
 
@@ -127,36 +366,48 @@
           </p>
 
           <div class="mt-4">
-            <h4 style="font-family:var(--gko-font-display); color:var(--gko-text); font-size:1.1rem; margin-bottom:0.75rem;">
+            <h4
+              style="font-family:var(--gko-font-display); color:var(--gko-text); font-size:1.1rem; margin-bottom:0.75rem;">
               <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-right:0.5rem;"></i>
               Fasilitas &amp; Aktivitas
             </h4>
             <ul class="gko-pack-list" style="list-style:none; padding:0; margin:0;">
-              <li style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
+              <li
+                style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
                 <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-top:.2rem;"></i>
-                <span><strong>5-7 Games Kolaboratif</strong> — dirancang untuk semua usia, dari anak-anak hingga dewasa</span>
+                <span><strong>5-7 Games Kolaboratif</strong> — dirancang untuk semua usia, dari anak-anak hingga
+                  dewasa</span>
               </li>
-              <li style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
+              <li
+                style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
                 <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-top:.2rem;"></i>
-                <span><strong>Fasilitator Ramah Komunitas</strong> — pemandu yang berpengalaman dengan kelompok lintas generasi</span>
+                <span><strong>Fasilitator Ramah Komunitas</strong> — pemandu yang berpengalaman dengan kelompok lintas
+                  generasi</span>
               </li>
-              <li style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
+              <li
+                style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
                 <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-top:.2rem;"></i>
-                <span><strong>Konsumsi &amp; Perlengkapan</strong> — snack, makan siang, dan perlengkapan lapangan</span>
+                <span><strong>Konsumsi &amp; Perlengkapan</strong> — snack, makan siang, dan perlengkapan
+                  lapangan</span>
               </li>
-              <li style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
+              <li
+                style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
                 <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-top:.2rem;"></i>
-                <span><strong>Sesi Berbagi &amp; Foto Bersama</strong> — momen untuk saling mengenal lebih dekat dan mengabadikan kebersamaan</span>
+                <span><strong>Sesi Berbagi &amp; Foto Bersama</strong> — momen untuk saling mengenal lebih dekat dan
+                  mengabadikan kebersamaan</span>
               </li>
-              <li style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
+              <li
+                style="display:flex; align-items:flex-start; gap:.55rem; font-size:.95rem; color:var(--gko-text-muted); margin-bottom:.65rem;">
                 <i class="bi bi-check-circle-fill" style="color:var(--gko-moss); margin-top:.2rem;"></i>
-                <span><strong>Dokumentasi Foto</strong> — setiap momen penting akan diabadikan oleh tim dokumentasi kami</span>
+                <span><strong>Dokumentasi Foto</strong> — setiap momen penting akan diabadikan oleh tim dokumentasi
+                  kami</span>
               </li>
             </ul>
           </div>
 
           <div class="d-flex flex-wrap gap-3 mt-4">
-            <a href="kontak.html" class="btn gko-btn-primary px-5 py-3">
+            <a href="https://wa.me/6282211221909?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20paket%20Outbound%20%26%20Gathering%20Komunitas%20(Rp195.000%2Fpeserta)"
+              target="_blank" class="btn gko-btn-primary px-5 py-3">
               <i class="bi bi-whatsapp"></i> Pesan Paket Ini
             </a>
             <a href="paket-outbound.html" class="btn gko-btn-outline px-4 py-3">
@@ -182,72 +433,102 @@
 
       <div class="row g-4 justify-content-center" data-aos="fade-up" data-aos-delay="100">
         <div class="col-lg-10">
-          <div class="gko-timeline" style="position:relative; padding-left:2.4rem;">
+          <div class="gko-timeline">
 
             <!-- Item 1 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 08:00 - 08:30</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Registrasi &amp; Pembukaan</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Peserta tiba, registrasi ulang, pembagian grup, dan briefing singkat dari fasilitator.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">08:00 - 08:30</span>
+              <h3>Registrasi &amp; Pembukaan</h3>
+              <p>Peserta tiba, registrasi ulang, pembagian grup, dan briefing singkat dari fasilitator.</p>
             </div>
 
             <!-- Item 2 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 08:30 - 10:00</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Ice Breaking &amp; Games Kolaboratif (Sesi 1)</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Permainan perkenalan dan pemanasan yang seru untuk mencairkan suasana dan membangun keakraban awal.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">08:30 - 10:00</span>
+              <h3>Ice Breaking &amp; Games Kolaboratif (Sesi 1)</h3>
+              <p>Permainan perkenalan dan pemanasan yang seru untuk mencairkan suasana dan membangun keakraban awal.</p>
             </div>
 
             <!-- Item 3 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 10:00 - 10:30</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Istirahat &amp; Snack</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Waktu untuk menikmati snack dan minuman, sekaligus bersosialisasi santai.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">10:00 - 10:30</span>
+              <h3>Istirahat &amp; Snack</h3>
+              <p>Waktu untuk menikmati snack dan minuman, sekaligus bersosialisasi santai.</p>
             </div>
 
             <!-- Item 4 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 10:30 - 12:00</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Games Kolaboratif (Sesi 2)</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Tantangan tim yang lebih intensif — kerjasama, komunikasi, dan strategi kelompok diuji.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">10:30 - 12:00</span>
+              <h3>Games Kolaboratif (Sesi 2)</h3>
+              <p>Tantangan tim yang lebih intensif — kerjasama, komunikasi, dan strategi kelompok diuji.</p>
             </div>
 
             <!-- Item 5 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 12:00 - 13:00</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Makan Siang &amp; Istirahat</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Waktu untuk menikmati makan siang bersama, bercerita, dan mengisi energi.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">12:00 - 13:00</span>
+              <h3>Makan Siang &amp; Istirahat</h3>
+              <p>Waktu untuk menikmati makan siang bersama, bercerita, dan mengisi energi.</p>
             </div>
 
             <!-- Item 6 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:2rem;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 13:00 - 14:30</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Sesi Berbagi &amp; Refleksi</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Momen saling berbagi cerita, pengalaman, dan kesan dari setiap peserta.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">13:00 - 14:30</span>
+              <h3>Sesi Berbagi &amp; Refleksi</h3>
+              <p>Momen saling berbagi cerita, pengalaman, dan kesan dari setiap peserta.</p>
             </div>
 
             <!-- Item 7 -->
-            <div class="gko-timeline-item" style="position:relative; padding-bottom:0;">
-              <div class="gko-timeline-dot" style="position:absolute; left:-2.4rem; top:2px; width:22px; height:22px; border-radius:50%; background:var(--gko-rust); border:3px solid var(--gko-bg); box-shadow:0 0 0 2px rgba(217,123,41,.4);"></div>
-              <span class="gko-timeline-year" style="font-family:var(--gko-font-tag); text-transform:uppercase; letter-spacing:.06em; color:var(--gko-rust); font-size:.85rem; font-weight:600; display:block; margin-bottom:.3rem;">⏰ 14:30 - 15:00</span>
-              <h3 style="font-size:1.15rem; color:var(--gko-text); margin-bottom:.4rem;">Penutupan &amp; Foto Bersama</h3>
-              <p style="color:var(--gko-text-muted); font-size:.92rem; margin-bottom:0;">Sesi penutupan, kesan-pesan, dan mengabadikan momen kebersamaan melalui foto.</p>
+            <div class="gko-timeline-item">
+              <div class="gko-timeline-dot"></div>
+              <span class="gko-timeline-year">14:30 - 15:00</span>
+              <h3>Penutupan &amp; Foto Bersama</h3>
+              <p>Sesi penutupan, kesan-pesan, dan mengabadikan momen kebersamaan melalui foto.</p>
             </div>
 
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="text-center mt-4" data-aos="fade-up">
-        <p class="gko-text-muted">
-          <i class="bi bi-pencil-square"></i> Rundown bisa disesuaikan dengan kebutuhan komunitas Anda.
-        </p>
+  <!-- ================= INCLUDE / EXCLUDE ================= -->
+  <section class="gko-section" id="include-exclude">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h3 style="font-family: var(--gko-font-display); font-size: 1.2rem; color: var(--gko-moss);">
+            <i class="bi bi-check-circle-fill" style="color: var(--gko-moss);"></i> Termasuk
+          </h3>
+          <ul class="gko-list-check">
+            <li><i class="bi bi-check-circle-fill"></i> 1 Fasilitator utama + 1 asisten</li>
+            <li><i class="bi bi-check-circle-fill"></i> Peralatan games lengkap</li>
+            <li><i class="bi bi-check-circle-fill"></i> Makan siang + snack + air mineral</li>
+            <li><i class="bi bi-check-circle-fill"></i> Dokumentasi foto profesional</li>
+            <li><i class="bi bi-check-circle-fill"></i> Sertifikat partisipasi</li>
+            <li><i class="bi bi-check-circle-fill"></i> Sound system &amp; P3K</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h3 style="font-family: var(--gko-font-display); font-size: 1.2rem; color: #dc3545;">
+            <i class="bi bi-x-circle-fill" style="color: #dc3545;"></i> Tidak Termasuk
+          </h3>
+          <ul class="gko-list-check">
+            <li><i class="bi bi-x-circle-fill"></i> Sewa lokasi / venue</li>
+            <li><i class="bi bi-x-circle-fill"></i> Transportasi peserta</li>
+            <li><i class="bi bi-x-circle-fill"></i> Penginapan / akomodasi</li>
+            <li><i class="bi bi-x-circle-fill"></i> Asuransi pribadi</li>
+          </ul>
+          <div class="gko-info-box mt-3">
+            <p><strong><i class="bi bi-info-circle" style="color: var(--gko-rust);"></i> Catatan:</strong> Jika peserta
+              lebih dari 40 orang, kami tambah fasilitator (+Rp25.000/peserta per 10 orang).</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -262,56 +543,46 @@
 
       <div class="row g-4">
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-          <div class="gko-pack-card">
-            <div class="gko-pack-media">
-              <span class="gko-pack-tag">Fun Games</span>
-              <img src="assets/img/paket/family-fun-day-&-reuni-komunitas.webp" alt="Family Fun Day">
+          <a href="detail-Family-Fun-Day.html" class="gko-recom-card">
+            <img src="assets/img/paket/family-fun-day-&-reuni-komunitas.webp" alt="Family Fun Day">
+            <div class="body">
+              <h4>Family Fun Day &amp; Reuni</h4>
+              <p>Aktivitas ringan untuk keluarga besar atau reuni alumni.</p>
+              <div class="price-tag">Rp165.000 <small>/ peserta</small></div>
             </div>
-            <div class="gko-pack-body">
-              <h3>Family Fun Day &amp; Reuni</h3>
-              <p class="gko-text-muted">Aktivitas ringan untuk keluarga besar atau reuni alumni.</p>
-              <div class="gko-pack-price"><span>Rp165rb</span> / peserta</div>
-              <a href="detail-Family-Fun-Day.html" class="btn gko-btn-primary w-100 mt-3">Lihat Detail</a>
-            </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="gko-pack-card">
-            <div class="gko-pack-media">
-              <span class="gko-pack-tag">Fun Games</span>
-              <img src="assets/img/paket/ospek-&-team-building-kampus.webp" alt="Ospek & Team Building Kampus">
+          <a href="detail-Ospek-Team-Building.html" class="gko-recom-card">
+            <img src="assets/img/paket/ospek-&-team-building-kampus.webp" alt="Ospek & Team Building Kampus">
+            <div class="body">
+              <h4>Ospek &amp; Team Building Kampus</h4>
+              <p>Program untuk BEM, UKM, dan himpunan mahasiswa.</p>
+              <div class="price-tag">Rp210.000 <small>/ peserta</small></div>
             </div>
-            <div class="gko-pack-body">
-              <h3>Ospek &amp; Team Building Kampus</h3>
-              <p class="gko-text-muted">Program untuk BEM, UKM, dan himpunan mahasiswa.</p>
-              <div class="gko-pack-price"><span>Rp210rb</span> / peserta</div>
-              <a href="detail-Ospek-Team-Building.html" class="btn gko-btn-primary w-100 mt-3">Lihat Detail</a>
-            </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="gko-pack-card">
-            <div class="gko-pack-media">
-              <span class="gko-pack-tag">Adventure</span>
-              <img src="assets/img/paket/jungle-survival-camp.webp" alt="Jungle Survival Camp">
+          <a href="detail-Jungle-Survival.html" class="gko-recom-card">
+            <img src="assets/img/paket/jungle-survival-camp.webp" alt="Jungle Survival Camp">
+            <div class="body">
+              <h4>Jungle Survival Camp</h4>
+              <p>Simulasi bertahan hidup ringan &amp; navigasi tim di hutan.</p>
+              <div class="price-tag">Rp525.000 <small>/ peserta</small></div>
             </div>
-            <div class="gko-pack-body">
-              <h3>Jungle Survival Camp</h3>
-              <p class="gko-text-muted">Simulasi bertahan hidup ringan &amp; navigasi tim di hutan.</p>
-              <div class="gko-pack-price"><span>Rp525rb</span> / peserta</div>
-              <a href="detail-Jungle-Survival.html" class="btn gko-btn-primary w-100 mt-3">Lihat Detail</a>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
 
       <div class="text-center mt-4">
-        <a href="paket-outbound.html" class="btn gko-btn-outline-dark px-4">Lihat Semua Paket <i class="bi bi-arrow-right"></i></a>
+        <a href="paket-outbound.html" class="btn gko-btn-outline-dark px-4">Lihat Semua Paket <i
+            class="bi bi-arrow-right"></i></a>
       </div>
     </div>
   </section>
+
 
   <!-- ================= CTA ================= -->
   <section class="gko-cta">
@@ -328,8 +599,8 @@
             Kami siap membantu menyesuaikan program dengan kebutuhan spesifik komunitas Anda.
           </p>
           <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
-            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener"
-              class="btn gko-btn-primary btn-lg px-4">
+            <a href="https://wa.me/6282211221909?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20paket%20Outbound%20%26%20Gathering%20Komunitas%20(Rp195.000%2Fpeserta)"
+              target="_blank" rel="noopener" class="btn gko-btn-primary btn-lg px-4">
               <i class="bi bi-whatsapp"></i> Konsultasi via WhatsApp
             </a>
             <a href="paket-outbound.html" class="btn gko-btn-outline btn-lg px-4">Lihat Paket Lain</a>
@@ -377,9 +648,9 @@
         <div class="col-6 col-lg-3">
           <h4 class="gko-footer-title">Paket Favorit</h4>
           <ul class="gko-footer-list">
-            <li><a href="detail-Rope-Course-Flying-Fox.html">Rope Course &amp; Flying Fox</a></li>
-            <li><a href="detail-Corporate-Gathering-2D1N.html">Corporate Gathering 2D1N</a></li>
-            <li><a href="detail-Outbound-Ceria-Sekolah.html">Outbound Ceria Sekolah</a></li>
+            <li><a href="detail-rope-course.html">Rope Course &amp; Flying Fox</a></li>
+            <li><a href="detail-corporate-gathering.html">Corporate Gathering 2D1N</a></li>
+            <li><a href="detail-outbound-ceceria.html">Outbound Ceria Sekolah</a></li>
             <li><a href="detail-Family-Fun-Day.html">Family Fun Day</a></li>
           </ul>
         </div>
@@ -388,8 +659,7 @@
           <h4 class="gko-footer-title">Hubungi Kami</h4>
           <ul class="gko-footer-list gko-footer-contact">
             <li><i class="bi bi-geo-alt-fill"></i> Jl. Rindang Alam No. 21, Bogor, Jawa Barat</li>
-            <li><i class="bi bi-whatsapp"></i> +62 812-3456-7890</li>
-            <li><i class="bi bi-envelope-fill"></i> halo@gemilangkatun.id</li>
+            <li><i class="bi bi-whatsapp"></i> +62 822-1122-1909</li>
           </ul>
         </div>
       </div>
@@ -404,7 +674,8 @@
   </footer>
 
   <!-- ================= FLOATING BUTTONS ================= -->
-  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="gko-wa-float" aria-label="Chat WhatsApp">
+  <a href="https://wa.me/6282211221909?text=Halo%20Gemilang%20Katun%2C%20saya%20tertarik%20dengan%20paket%20Outbound%20%26%20Gathering%20Komunitas%20(Rp195.000%2Fpeserta)"
+    target="_blank" rel="noopener" class="gko-wa-float" aria-label="Chat WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
@@ -412,9 +683,9 @@
     <i class="bi bi-arrow-up"></i>
   </button>
 
+  <!-- ================= SCRIPTS ================= -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="assets/js/script.js"></script>
   <script>
     // Inisialisasi AOS
@@ -426,6 +697,19 @@
         offset: 60
       });
     }
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    });
+    backBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 
